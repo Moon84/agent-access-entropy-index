@@ -1,0 +1,203 @@
+资源ID,平台,资源,领域,国家地区,资源格式,来源格式,官方CLI,官方Skill,官方MCP,官方SDK/API,来源URL,官方状态,复核状态,开放级别,风险级别,说明,来源批次,检查日期
+aar-0180,Hugging Face,Hugging Face Skills,AI / 模型平台,US/France,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,hf-cli Hub Dataset Training Evaluation,legacy-agent-skill-ecosystem,2026-07-06
+aar-0177,Anthropic,Official Claude Skills,AI / Agent,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Claude 官方 Skills 生态,legacy-agent-skill-ecosystem,2026-07-06
+aar-0179,Google Gemini,Gemini Skills,AI / Agent,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Gemini API 和 Vertex AI 开发技能,legacy-agent-skill-ecosystem,2026-07-06
+aar-0178,OpenAI,OpenAI Skills,AI / Agent,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Codex GitHub PR CLI 工作流丰富,legacy-agent-skill-ecosystem,2026-07-06
+aar-0056,Azure DevOps,Azure DevOps,开发者平台,,CLI;Skill;MCP,github_repo,有扩展,Microsoft Skill/MCP 生态,Microsoft MCP,,https://github.com/microsoft/azure-devops-cli-extension,部分确认,部分确认,,Medium,Azure DevOps 专属 Skill 需细查,legacy-platform-audit,2026-07-06
+aar-0054,GitHub,GitHub,开发者平台,,CLI;Skill;MCP,github_repo,有 gh,有 gh Skill,有,,https://github.com/cli/cli,已确认,已确认,,Medium,官方 CLI Skill MCP 均确认,legacy-platform-audit,2026-07-06
+aar-0055,GitLab,GitLab,开发者平台,,CLI,official_web,有 glab,未确认,未确认,,https://gitlab.com/gitlab-org/cli,已确认 CLI,已确认 CLI,,Medium,Skill/MCP 待查,legacy-platform-audit,2026-07-06
+aar-0131,Alpaca,alpaca-py,金融数据与终端,US,CLI;SDK/API,github_repo,SDK/API,未发现官方,,高,https://github.com/alpacahq/alpaca-py,未发现官方,未发现官方,中高,Critical,交易与行情 API 开放度高但需风控,legacy-openness-matrix,2026-07-06
+aar-0135,Baostock,Baostock,金融数据与终端,China,CLI;SDK/API,github_repo,Python SDK,未发现官方,,中,https://github.com/baostock/baostock,未发现官方,未发现官方,中,Medium,免费证券数据接口,legacy-openness-matrix,2026-07-06
+aar-0124,Bloomberg,BLPAPI,金融数据与终端,US/Global,CLI;SDK/API,github_repo,Terminal/API,未发现官方,,高，商业授权,https://github.com/msitt/blpapi-python,未发现官方,未发现官方,中高,Medium,依赖 Bloomberg 授权的 Python API 包,legacy-openness-matrix,2026-07-06
+aar-0126,FactSet,FactSet SDKs,金融数据与终端,US,CLI;SDK/API,github_repo,SDK/API,未发现官方,,高，商业授权,https://github.com/factset,未发现官方,未发现官方,中高,Medium,官方 GitHub 组织提供多语言 SDK,legacy-openness-matrix,2026-07-06
+aar-0132,Interactive Brokers,TWS API,金融数据与终端,US/Global,CLI;SDK/API,github_repo,TWS Gateway/API,未发现官方,,高，账户授权,https://github.com/InteractiveBrokers/tws-api-public,未发现官方,未发现官方,中高,Critical,交易与行情 API 成熟但依赖账户和网关,legacy-openness-matrix,2026-07-06
+aar-0125,LSEG / Refinitiv,LSEG Data Library,金融数据与终端,UK/Global,CLI;SDK/API,github_repo,SDK/API,未发现官方,,高，商业授权,https://github.com/LSEG-API-Samples/Example.DataLibrary.Python,未发现官方,未发现官方,中高,Medium,Workspace/Data Library API 样例丰富,legacy-openness-matrix,2026-07-06
+aar-0127,Morningstar,Morningstar Developer,金融数据与终端,US,CLI;SDK/API,official_web,API/Direct,未发现官方,,中高，商业授权,https://developer.morningstar.com,未发现官方,未发现官方,中,Medium,数据和 Direct 生态偏商业授权,legacy-openness-matrix,2026-07-06
+aar-0129,Nasdaq Data Link,Data Link Python,金融数据与终端,US,CLI;SDK/API,github_repo,SDK/API,未发现官方,,高,https://github.com/Nasdaq/data-link-python,未发现官方,未发现官方,中高,Medium,原 Quandl 数据平台 Python SDK,legacy-openness-matrix,2026-07-06
+aar-0130,Polygon.io / Massive,client-python,金融数据与终端,US,CLI;SDK/API,github_repo,SDK/API,未发现官方,,高,https://github.com/massive-com/client-python,未发现官方,未发现官方,中高,Medium,市场数据 REST/WebSocket API,legacy-openness-matrix,2026-07-06
+aar-0128,S&P Global Market Intelligence,Capital IQ / S&P APIs,金融数据与终端,US,CLI;SDK/API,official_web,API,未发现官方,,中高，商业授权,https://developer.spglobal.com,未发现官方,未发现官方,中,Medium,企业订阅型数据接口,legacy-openness-matrix,2026-07-06
+aar-0133,Tushare Pro,Tushare,金融数据与终端,China,CLI;SDK/API,github_repo,SDK/API,未发现官方,,中高，积分/授权,https://github.com/waditu/tushare,未发现官方,未发现官方,中高,Medium,A 股数据接口社区影响力强,legacy-openness-matrix,2026-07-06
+aar-0137,米筐 Ricequant,Ricequant,金融数据与终端,China,CLI;SDK/API,official_web,SDK/API,未发现官方,,中高，平台授权,https://www.ricequant.com,未发现官方,未发现官方,中,Medium,量化投研平台 API/数据绑定平台环境,legacy-openness-matrix,2026-07-06
+aar-0136,聚宽 JoinQuant,JoinQuant,金融数据与终端,China,CLI;SDK/API,official_web,SDK/API,未发现官方,,中高，平台授权,https://www.joinquant.com,未发现官方,未发现官方,中,Medium,量化研究和回测平台数据接口多在平台内使用,legacy-openness-matrix,2026-07-06
+aar-0122,东方财富 Choice,Choice 金融终端,金融数据与终端,China,SDK/API,official_web,未发现,未发现官方 Skill/MCP,,中高，商业授权,https://choice.eastmoney.com,未发现官方 Skill/MCP,未发现官方 Skill/MCP,中,Medium,终端和量化接口生态存在但未发现官方 Agent Skill/MCP 公开入口,legacy-openness-matrix,2026-07-06
+aar-0024,万得,Wind / 万得,金融数据,,CLI;Skill;MCP,github_repo,Skill 内置 CLI 调用,有,有 wind-mcp-skill,,https://github.com/Wind-Information-Co-Ltd/wind-skills,已确认,已确认,,Medium,官方 wind-skills,legacy-platform-audit,2026-07-06
+aar-0025,同花顺 iFinD,同花顺 iFinD,金融数据,,CLI;MCP,official_web,MCP 平台/Token,未确认 GitHub Skill,有官方 MCP 平台,,https://mcp.51ifind.com,部分确认,部分确认,,Medium,官方 MCP 平台已确认,legacy-platform-audit,2026-07-06
+aar-0032,Alpaca,Alpaca,金融数据,,CLI,github_repo,SDK/API,未发现,未发现,,https://github.com/alpacahq/alpaca-py,已确认 SDK,已确认 SDK,,Critical,交易/行情 API 官方 SDK,legacy-platform-audit,2026-07-06
+aar-0027,Bloomberg,Bloomberg,金融数据,,CLI,github_repo,Terminal/API,未发现官方 Skill,未发现官方 MCP,,https://github.com/msitt/blpapi-python,未发现官方 Skill/MCP,未发现官方 Skill/MCP,,Medium,API 成熟但 Agent 入口未确认,legacy-platform-audit,2026-07-06
+aar-0029,FactSet,FactSet,金融数据,,CLI,github_repo,SDK/API,未发现,未发现,,https://github.com/factset,未发现官方 Skill/MCP,未发现官方 Skill/MCP,,Medium,官方 SDK 组织明确,legacy-platform-audit,2026-07-06
+aar-0033,Interactive Brokers,Interactive Brokers,金融数据,,CLI,github_repo,TWS/API,未发现,未发现,,https://github.com/InteractiveBrokers/tws-api-public,已确认 API,已确认 API,,Critical,交易自动化需风控,legacy-platform-audit,2026-07-06
+aar-0028,LSEG / Refinitiv,LSEG / Refinitiv,金融数据,,CLI,github_repo,SDK/API,未发现,未发现,,https://github.com/LSEG-API-Samples/Example.DataLibrary.Python,未发现官方 Skill/MCP,未发现官方 Skill/MCP,,Medium,官方 SDK 样例明确,legacy-platform-audit,2026-07-06
+aar-0030,Nasdaq Data Link,Nasdaq Data Link,金融数据,,CLI,github_repo,SDK/API,未发现,未发现,,https://github.com/Nasdaq/data-link-python,已确认 SDK,已确认 SDK,,Medium,官方 Python SDK,legacy-platform-audit,2026-07-06
+aar-0031,Polygon.io / Massive,Polygon.io / Massive,金融数据,,CLI,github_repo,SDK/API,未发现,未发现,,https://github.com/massive-com/client-python,已确认 SDK,已确认 SDK,,Medium,官方 Python client,legacy-platform-audit,2026-07-06
+aar-0026,东方财富 Choice,东方财富 Choice,金融数据,,,official_web,未发现,未发现,未发现,,https://choice.eastmoney.com,未发现官方 Skill/MCP,未发现官方 Skill/MCP,,Medium,终端/API 存在但 Agent 入口未发现,legacy-platform-audit,2026-07-06
+aar-0037,Base,Base,数字货币交易,,CLI;Skill;MCP,github_repo,AgentKit/Base MCP 生态,有相关 Agent skills,有 Base MCP legacy,,https://github.com/base/base-mcp-legacy,已确认 MCP,已确认 MCP,,Critical,Base/Coinbase 链上 Agent 生态,legacy-platform-audit,2026-07-07
+aar-0035,BNB Chain,BNB Chain,数字货币交易,,CLI;Skill;MCP,github_repo,MCP 相关工具,有 bnbchain-skills,有 BNB Chain MCP 指引,,https://github.com/bnb-chain/bnbchain-skills,已确认 Skill/MCP 指引,已确认 Skill/MCP 指引,,Critical,官方 BNB Chain Skills 指导 Agent 使用 BNB Chain MCP,legacy-platform-audit,2026-07-07
+aar-0036,Coinbase,Coinbase,数字货币交易,,CLI;Skill;MCP,github_repo,awal / AgentKit 工具链,有 agentic-wallet-skills,有 payments-mcp；AgentKit 含 MCP 示例,,https://github.com/coinbase/agentic-wallet-skills,已确认 Skill/MCP,已确认 Skill/MCP,,Critical,官方 Agentic Wallet Skills AgentKit Payments MCP,legacy-platform-audit,2026-07-07
+aar-0040,CoinMarketCap,CoinMarketCap,数字货币交易,,CLI;Skill;MCP,github_repo,API Skills,有 skills-for-ai-agents-by-CoinMarketCap,Skill 形式支持 MCP Skills,,https://github.com/coinmarketcap-official/skills-for-ai-agents-by-CoinMarketCap,已确认 Skill,已确认 Skill,,Critical,官方 CoinMarketCap AI Agent Skills,legacy-platform-audit,2026-07-07
+aar-0038,OKX,OKX,数字货币交易,,CLI;Skill;MCP,github_repo,有 @okx_ai/okx-trade-cli,有 okx/agent-skills,有 okx/agent-trade-kit,,https://github.com/okx/agent-skills,已确认 Skill/MCP,已确认 Skill/MCP,,Critical,官方 Skill + MCP trading kit,legacy-platform-audit,2026-07-07
+aar-0034,币安,Binance / 币安,数字货币交易,,CLI;Skill,github_repo,CLI/Skill hub 内工具,有 binance-skills-hub,未确认官方 MCP；社区 MCP 多,,https://github.com/binance/binance-skills-hub,已确认 Skill,已确认 Skill,,Critical,官方 Skills Hub 面向 crypto 原生 Agent 能力,legacy-platform-audit,2026-07-07
+aar-0039,Kraken,Kraken,数字货币交易,,CLI;MCP,github_repo,有 kraken-cli,CLI 内置 Agent 场景；未确认独立 Skill 仓库,CLI 内置 MCP server,,https://github.com/krakenfx/kraken-cli,已确认 CLI/MCP,已确认 CLI/MCP,,Critical,官方 AI-native CLI 支持 crypto stocks forex derivatives,legacy-platform-audit,2026-07-07
+aar-0045,Bitget,Bitget,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,官方 API 存在；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0049,BitMEX,BitMEX,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,API/交易接口成熟；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0044,Bybit,Bybit,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,常见第三方 SDK/API；官方 Agent 入口未确认,legacy-platform-audit,2026-07-07
+aar-0048,Crypto.com,Crypto.com,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,交易平台 API 存在；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0052,DeBank,DeBank,数字货币交易,,CLI,official_web,API/数据平台,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,链上资产/钱包数据平台；官方 Agent 入口未确认,legacy-platform-audit,2026-07-07
+aar-0053,DefiLlama,DefiLlama,数字货币交易,,CLI,official_web,API/数据平台,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,DeFi 数据 API 开放；Agent 入口多为社区,legacy-platform-audit,2026-07-07
+aar-0050,Deribit,Deribit,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,期权/衍生品 API 成熟；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0046,Gate.io,Gate.io,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,官方 API 存在；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0047,KuCoin,KuCoin,数字货币交易,,CLI,official_web,API/SDK,未确认官方 Skill,未确认官方 MCP,,待补,未确认官方,未确认官方,,Critical,官方 API 存在；Agent Skill/MCP 待查,legacy-platform-audit,2026-07-07
+aar-0067,Anthropic,Anthropic,云数据AI,,CLI;Skill;MCP,github_repo,SDK/API,有,MCP 生态核心方,,https://github.com/anthropics/anthropic-sdk-python,已确认 SDK/Skill,已确认 SDK/Skill,,Medium,Claude Skills 生态,legacy-platform-audit,2026-07-06
+aar-0058,Azure,Azure,云数据AI,,CLI;Skill;MCP,github_repo,有,有 Microsoft Skills,有 Microsoft MCP,,https://github.com/Azure/azure-cli,已确认,已确认,,Medium,官方 CLI + Skills/MCP 生态,legacy-platform-audit,2026-07-06
+aar-0062,Supabase,Supabase,云数据AI,,CLI;Skill;MCP,github_repo,有,有,有 hosted/平台 MCP 线索,,https://github.com/supabase/cli,部分确认,部分确认,,Medium,CLI 明确 MCP 需继续查,legacy-platform-audit,2026-07-06
+aar-0059,Cloudflare,Cloudflare,云数据AI,,CLI;Skill,github_repo,有 Wrangler,有,未确认,,https://github.com/cloudflare/workers-sdk,已确认 CLI/Skill,已确认 CLI/Skill,,High,Workers SDK + Wrangler,legacy-platform-audit,2026-07-06
+aar-0064,DuckDB,DuckDB,云数据AI,,CLI;Skill,github_repo,有,有,未确认,,https://github.com/duckdb/duckdb,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,官方 CLI + Skills 收录,legacy-platform-audit,2026-07-06
+aar-0068,Hugging Face,Hugging Face,云数据AI,,CLI;Skill,github_repo,有 hf,有,未确认,,https://github.com/huggingface/huggingface_hub,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,Hub Datasets Spaces,legacy-platform-audit,2026-07-06
+aar-0063,MongoDB,MongoDB,云数据AI,,CLI;Skill,github_repo,有 mongosh,有,未确认,,https://github.com/mongodb-js/mongosh,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,官方 CLI + Skills 收录,legacy-platform-audit,2026-07-06
+aar-0061,Netlify,Netlify,云数据AI,,CLI;Skill,github_repo,有,有,未确认,,https://github.com/netlify/cli,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,Netlify CLI + Skills,legacy-platform-audit,2026-07-06
+aar-0066,OpenAI,OpenAI,云数据AI,,CLI;Skill,github_repo,SDK/API,有,未确认官方 MCP,,https://github.com/openai/openai-python,已确认 SDK/Skill,已确认 SDK/Skill,,Medium,官方 SDK + Codex Skill 生态,legacy-platform-audit,2026-07-06
+aar-0065,Pinecone,Pinecone,云数据AI,,CLI;Skill,github_repo,SDK/API,有,未确认,,https://github.com/pinecone-io/skills,已确认 Skill,已确认 Skill,,Medium,官方 Agent Skills library,legacy-platform-audit,2026-07-06
+aar-0060,Vercel,Vercel,云数据AI,,CLI;Skill,github_repo,有,有,未确认,,https://github.com/vercel/vercel,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,Vercel CLI + skills,legacy-platform-audit,2026-07-06
+aar-0070,来也 ADP,来也 ADP,云数据AI,,CLI;Skill,github_repo,有,有,未确认,,https://github.com/laiye-ai/adp-cli,已确认 CLI/Skill,已确认 CLI/Skill,,Medium,文档解析分类抽取校验,legacy-platform-audit,2026-07-06
+aar-0057,AWS,AWS,云数据AI,,CLI,github_repo,有,未确认官方 Skill,未确认官方 MCP,,https://github.com/aws/aws-cli,已确认 CLI,已确认 CLI,,Medium,官方 CLI 明确,legacy-platform-audit,2026-07-06
+aar-0069,阿里云百炼 Model Studio,阿里云百炼 Model Studio,云数据AI,,CLI,github_repo,有,未确认,未确认,,https://github.com/modelstudioai/cli,已确认 CLI,已确认 CLI,,Medium,Agent-first CLI,legacy-platform-audit,2026-07-06
+aar-0017,钉钉,钉钉 / DingTalk,办公协作,,CLI;Skill;MCP,github_repo,有,有,基于 MCP metadata/CLI,,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,已确认,已确认,,Medium,官方 Workspace CLI,legacy-platform-audit,2026-07-06
+aar-0015,金山文档,Kdocs / 金山文档 / WPS 365,办公协作,,CLI;Skill;MCP,github_repo,有本地 CLI,有,非典型 MCP,,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,已确认,已确认,,Medium,官方 WPS AirPage Skill,legacy-platform-audit,2026-07-06
+aar-0016,飞书,飞书 / Lark / Feishu,办公协作,,CLI;Skill;MCP,github_repo,有,有 20+ Agent Skills,CLI/命令网关形态,,https://github.com/larksuite/cli,已确认,已确认,,Medium,官方 CLI + Agent Skills,legacy-platform-audit,2026-07-06
+aar-0020,Microsoft 365 / Learn,Microsoft 365 / Learn,办公协作,,CLI;Skill;MCP,github_repo,有,有,有,,https://github.com/MicrosoftDocs/mcp,已确认,已确认,,Medium,Microsoft MCP/Skills 生态,legacy-platform-audit,2026-07-06
+aar-0018,语雀,语雀 / Yuque,办公协作,,CLI;Skill;MCP,github_repo,Plugin/MCP,有,有,,https://github.com/yuque/yuque-ecosystem,已确认,已确认,,Medium,官方 MCP + Skills + Plugin,legacy-platform-audit,2026-07-06
+aar-0019,Google Workspace,Google Workspace,办公协作,,CLI;Skill,github_repo,有 gws,有,未确认独立 MCP,,https://github.com/VoltAgent/awesome-agent-skills,已确认,已确认,,Medium,官方 Workspace CLI Skills,legacy-platform-audit,2026-07-06
+aar-0021,Notion,Notion,办公协作,,Skill;MCP,github_repo,未确认官方 CLI,Plugin/Skill 形态,有官方 MCP,,https://github.com/makenotion/notion-mcp-server,已确认 MCP,已确认 MCP,,Medium,官方 Notion MCP Server,legacy-platform-audit,2026-07-06
+aar-0022,Obsidian,Obsidian,办公协作,,CLI;Skill,github_repo,生态 CLI,准官方,未确认官方 MCP,,https://github.com/kepano/obsidian-skills,准官方,准官方,,Medium,CEO 发布 Agent Skills,legacy-platform-audit,2026-07-06
+aar-0167,钉钉,dingtalk-workspace-cli,企业协作与办公套件,China,Skill,github_repo,高,官方,,,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,官方,官方,,Medium,官方开源跨平台 CLI 面向 AI Agent 场景,legacy-agent-skill-ecosystem,2026-07-06
+aar-0184,Google Workspace,Google Workspace CLI Skills,企业协作与办公套件,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,gws CLI 管理 Drive Sheets Gmail Calendar Docs Slides,legacy-agent-skill-ecosystem,2026-07-06
+aar-0023,Zotero,Zotero,办公协作,,,github_repo,未发现官方 CLI,未发现官方 Skill,未发现官方 MCP,,https://github.com/zotero/zotero,未发现官方 Skill/MCP,未发现官方 Skill/MCP,,Medium,社区 CLI 补位,legacy-platform-audit,2026-07-06
+aar-0005,Bright Data,Bright Data,社交媒体,,CLI;Skill;MCP,github_repo,有 CLI/MCP,有 Skills,有 MCP,,https://github.com/brightdata/skills,已确认,已确认,,Medium,覆盖 Web/Social 数据抽取,legacy-platform-audit,2026-07-06
+aar-0002,Slack,Slack,社交媒体,,CLI;Skill;MCP,github_repo,有,Plugin 形态,有 hosted MCP / plugin,,https://github.com/slackapi/slack-mcp-plugin,已确认,已确认,,Medium,官方 Slack MCP Plugin 和 Slack CLI,legacy-platform-audit,2026-07-06
+aar-0006,Anysite,Anysite,社交媒体,,Skill;MCP,github_repo,未确认,有官方 MCP Skills,有 MCP,,https://github.com/anysiteio/agent-skills,已确认,已确认,,Medium,LinkedIn/social intelligence skills,legacy-platform-audit,2026-07-06
+aar-0004,Taisly,Taisly,社交媒体,,Skill,github_repo,未确认,有 Agent Skill,未确认,,https://github.com/taisly/agent,部分确认,部分确认,,Medium,社交媒体发布 Skill；官方归属需按 Taisly 组织继续核验,legacy-platform-audit,2026-07-06
+aar-0003,Typefully,Typefully,社交媒体,,Skill,github_repo,未确认,有,未确认,,https://github.com/VoltAgent/awesome-agent-skills,已确认 Skill,已确认 Skill,,Medium,官方 Skill 在聚合库中收录,legacy-platform-audit,2026-07-06
+aar-0001,X / Twitter,X / Twitter,社交媒体,,CLI,github_repo,有,未确认,未确认,,https://github.com/xdevplatform/xurl,已确认 CLI,已确认 CLI,,Medium,官方 X API CLI 生态明确；Skill/MCP 未确认官方,legacy-platform-audit,2026-07-06
+aar-0013,YouTube,YouTube,社交媒体,,CLI,github_repo,Google API/CLI 生态,未发现专属 Skill,未确认专属 MCP,,https://github.com/googleapis/google-api-python-client,部分确认,部分确认,,Medium,API/SDK 官方成熟,legacy-platform-audit,2026-07-06
+aar-0011,Instagram,Instagram,社交媒体,,,official_web,未发现官方 CLI,未发现官方,未发现官方,,待补,未发现官方,未发现官方,,Medium,Meta API 存在但官方 Agent Skill/MCP 未确认,legacy-platform-audit,2026-07-06
+aar-0014,Reddit,Reddit,社交媒体,,,official_web,未发现官方 CLI,未发现官方,未发现官方,,待补,未发现官方,未发现官方,,Medium,API 存在但 MCP/Skill 多为社区,legacy-platform-audit,2026-07-06
+aar-0012,TikTok,TikTok,社交媒体,,,official_web,未发现官方 CLI,未发现官方,未发现官方,,待补,未发现官方,未发现官方,,Medium,TikTok API 存在但 Skill 多为第三方,legacy-platform-audit,2026-07-06
+aar-0009,微信,微信 / WeChat,社交媒体,,,official_web,未发现统一官方 CLI,未发现官方,未发现官方,,待补,未发现官方,未发现官方,,Medium,官方接口分散在开放平台公众号企业微信,legacy-platform-audit,2026-07-06
+aar-0010,企业微信,企业微信 / WeCom,社交媒体,,,official_web,未发现统一官方 CLI,未发现官方,未发现官方,,待补,未发现官方,未发现官方,,Medium,API 开放但官方 Agent 入口需查,legacy-platform-audit,2026-07-06
+aar-0007,小红书,小红书,社交媒体,,,github_repo,未发现,未发现官方,未发现官方,,https://github.com/autoclaw-cc/xiaohongshu-skills,未发现官方,未发现官方,,Medium,社区 Skill 活跃,legacy-platform-audit,2026-07-06
+aar-0008,微信公众号,微信公众号,社交媒体,,,github_repo,未发现,未发现官方,未发现官方,,https://github.com/geekjourneyx/md2wechat-skill,未发现官方,未发现官方,,Medium,社区 md2wechat Skill/CLI 活跃,legacy-platform-audit,2026-07-06
+aar-0094,Obsidian,Obsidian Skills,文档与知识库,Global,CLI;Skill;SDK/API,github_repo,生态 CLI,准官方,,高,https://github.com/kepano/obsidian-skills,准官方,准官方,高,Medium,CEO 发布的 Agent Skills,legacy-openness-matrix,2026-07-06
+aar-0169,语雀,yuque-ecosystem,知识库与团队文档,China,Skill;MCP;Plugin,github_repo,中,官方,MCP,,https://github.com/yuque/yuque-ecosystem,官方,官方,,Medium,整合 MCP Server Skills Plugin,legacy-agent-skill-ecosystem,2026-07-06
+aar-0201,Apollo GraphQL,Apollo GraphQL Skills,GraphQL 平台,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Rover CLI Schema 管理 GraphOS,legacy-agent-skill-ecosystem,2026-07-06
+aar-0192,Binance,Binance Skills,加密金融,Global/China,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Critical,Binance API 与交易数据,legacy-agent-skill-ecosystem,2026-07-06
+aar-0202,Brave,Brave Skills,浏览器与搜索,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,bx CLI 搜索与浏览器能力,legacy-agent-skill-ecosystem,2026-07-06
+aar-0196,ClickHouse,ClickHouse Skills,数据库与分析,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,ClickHouse 查询与数据分析,legacy-agent-skill-ecosystem,2026-07-06
+aar-0181,Cloudflare,Cloudflare Skills,云边缘与安全,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,High,Wrangler Workers R2 D1 KV Pages,legacy-agent-skill-ecosystem,2026-07-06
+aar-0193,Coinbase,Coinbase Skills,加密金融,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Critical,Coinbase API 与链上工作流,legacy-agent-skill-ecosystem,2026-07-06
+aar-0199,Datadog Labs,Datadog Skills,可观测,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,pup CLI APM Logs Monitors,legacy-agent-skill-ecosystem,2026-07-06
+aar-0197,DuckDB,DuckDB Skills,本地分析数据库,Netherlands/Global,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,DuckDB CLI 文件读取查询,legacy-agent-skill-ecosystem,2026-07-06
+aar-0186,Microsoft,Microsoft Skills,企业软件与开发平台,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,覆盖多语言和开发栈,legacy-agent-skill-ecosystem,2026-07-06
+aar-0194,MongoDB,MongoDB Skills,数据库,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,MongoDB 操作与开发,legacy-agent-skill-ecosystem,2026-07-06
+aar-0182,Netlify,Netlify Skills,Web 部署平台,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,High,Netlify CLI Functions Edge Deploy,legacy-agent-skill-ecosystem,2026-07-06
+aar-0185,Notion,Notion Skills,知识库与协作,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Notion 页面数据库与工作流,legacy-agent-skill-ecosystem,2026-07-06
+aar-0187,NVIDIA,NVIDIA Skills,硬件半导体与 HPC,US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,CUDA-Q DALI NeMo TensorRT-LLM cuOpt Nsight,legacy-agent-skill-ecosystem,2026-07-06
+aar-0175,Obsidian,obsidian-skills,知识管理,Global,Skill,github_repo,高,准官方,,,https://github.com/kepano/obsidian-skills,准官方,准官方,,Medium,由 Obsidian CEO 发布且星标极高,legacy-agent-skill-ecosystem,2026-07-06
+aar-0195,Redis,Redis Skills,数据库,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Redis 操作与开发,legacy-agent-skill-ecosystem,2026-07-06
+aar-0189,Sentry,Sentry Skills,可观测与错误监控,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,SDK 安装 Issue 修复 AI Monitoring,legacy-agent-skill-ecosystem,2026-07-06
+aar-0191,Stripe,Stripe Skills,支付,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,High,Stripe 集成与 SDK 升级,legacy-agent-skill-ecosystem,2026-07-06
+aar-0190,TestMu AI / LambdaTest,TestMu AI Skills,测试平台,India/US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Appium Playwright Selenium Cypress HyperExecute,legacy-agent-skill-ecosystem,2026-07-06
+aar-0198,Tinybird,Tinybird Skills,实时数据平台,Spain/US,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Tinybird CLI SQL 数据管道,legacy-agent-skill-ecosystem,2026-07-06
+aar-0188,Trail of Bits,Trail of Bits Skills,安全审计,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,静态分析合约安全差分审计,legacy-agent-skill-ecosystem,2026-07-06
+aar-0183,Vercel,Vercel Skills,Web 部署平台,US,Skill,github_repo,中,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,Next.js 最佳实践缓存升级,legacy-agent-skill-ecosystem,2026-07-06
+aar-0200,WordPress,WordPress Skills,CMS,US/Global,Skill,github_repo,高,官方,,,https://github.com/VoltAgent/awesome-agent-skills,官方,官方,,Medium,WP-CLI 站点运维内容管理,legacy-agent-skill-ecosystem,2026-07-06
+aar-0168,金山文档,WPS-AirPage-Skill,文档与办公,China,Skill,github_repo,高,官方倾向,,,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,官方倾向,官方倾向,,Medium,通过本地 CLI 操作 WPS 365 AirPage 智能文档,legacy-agent-skill-ecosystem,2026-07-06
+aar-0170,语雀,yuque-plugin,知识库与团队文档,China,Plugin,github_repo,中,官方,,,https://github.com/yuque/yuque-plugin,官方,官方,,Medium,Claude Code Plugin 一键集成语雀 AI 能力,legacy-agent-skill-ecosystem,2026-07-06
+aar-0119,小红书,xiaohongshu-skills,数据供应商,China,SDK/API,github_repo,未发现,未发现官方,,低,https://github.com/autoclaw-cc/xiaohongshu-skills,未发现官方,未发现官方,低,Medium,社区 Skill 活跃,legacy-openness-matrix,2026-07-06
+aar-0120,微信公众号,md2wechat-skill,数据供应商,China,SDK/API,github_repo,未发现,未发现官方,,中,https://github.com/geekjourneyx/md2wechat-skill,未发现官方,未发现官方,中,Medium,社区发布 CLI 领先,legacy-openness-matrix,2026-07-06
+aar-0134,AKShare,AKShare,金融数据与终端,China,CLI;Skill;SDK/API,github_repo,Python SDK,社区 Skill 可用,,中高，聚合公开源,https://github.com/akfamily/akshare,社区 Skill 可用,社区 Skill 可用,中高,Medium,开源财经数据接口库覆盖 A 股港美股宏观等,legacy-openness-matrix,2026-07-06
+aar-0176,Zotero 社区,zotero-cli-cc,科研与文献管理,Global,Skill,github_repo,高,社区领先,,,https://github.com/Agents365-ai/zotero-cli-cc,社区领先,社区领先,,Medium,Zotero CLI for Claude Code,legacy-agent-skill-ecosystem,2026-07-06
+aar-0171,小红书社区,xiaohongshu-skills,社交内容与营销,China,Skill,github_repo,中,社区领先,,,https://github.com/autoclaw-cc/xiaohongshu-skills,社区领先,社区领先,,Medium,小红书 Skill 高星社区库,legacy-agent-skill-ecosystem,2026-07-06
+aar-0172,小红书社区,139 个小红书运营技能,社交内容与营销,China,Skill,github_repo,中,社区领先,,,https://github.com/vivy-yi/xiaohongshu-skills,社区领先,社区领先,,Medium,覆盖内容创作账号运营互动数据电商规则等,legacy-agent-skill-ecosystem,2026-07-06
+aar-0173,微信生态社区,md2wechat-skill,微信公众号内容发布,China,Skill,github_repo,高,社区领先,,,https://github.com/geekjourneyx/md2wechat-skill,社区领先,社区领先,,Medium,Markdown 到微信公众号排版发布高星项目,legacy-agent-skill-ecosystem,2026-07-06
+aar-0174,微信生态社区,wechat-skills,微信生态,China,Skill,github_repo,中,社区,,,https://github.com/huangdijia/wechat-skills,社区,社区,,Medium,微信相关技能尝试,legacy-agent-skill-ecosystem,2026-07-06
+aar-0158,Anthropic,Anthropic SDK,AI与模型平台,US,CLI;Skill;SDK/API,github_repo,SDK/API,有,,高,https://github.com/anthropics/anthropic-sdk-python,有,有,高,Medium,官方 SDK 和 Claude Skills,legacy-openness-matrix,2026-07-06
+aar-0159,Hugging Face,huggingface_hub,AI与模型平台,US/France,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/huggingface/huggingface_hub,有,有,高,Medium,Hub Datasets Spaces,legacy-openness-matrix,2026-07-06
+aar-0160,MiniMax,MiniMax Skills,AI与模型平台,China,CLI;Skill;SDK/API,github_repo,CLI/API,有,,高,https://github.com/VoltAgent/awesome-agent-skills,有,有,中高,Medium,MiniMax AI CLI 与 API,legacy-openness-matrix,2026-07-06
+aar-0157,OpenAI,OpenAI Python SDK,AI与模型平台,US,CLI;Skill;SDK/API,github_repo,SDK/API,有,,高,https://github.com/openai/openai-python,有,有,高,Medium,官方 SDK 和 Codex Skill 生态,legacy-openness-matrix,2026-07-06
+aar-0162,来也 ADP,ADP CLI,AI与模型平台,China,CLI;Skill;SDK/API,github_repo,有,有,,中高,https://github.com/laiye-ai/adp-cli,有,有,中高,Medium,文档解析分类抽取校验,legacy-openness-matrix,2026-07-06
+aar-0161,阿里云百炼,Model Studio CLI,AI与模型平台,China,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/modelstudioai/cli,未发现,未发现,中高,Medium,Agent-first CLI,legacy-openness-matrix,2026-07-06
+aar-0071,GitHub,GitHub CLI,开发者平台与代码托管,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/cli/cli,有,有,高,Medium,官方 CLI 且 cli/cli 内置 gh Skill,legacy-openness-matrix,2026-07-06
+aar-0072,GitLab,glab,开发者平台与代码托管,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/profclems/glab,未发现,未发现,中高,Medium,GitHub 仓库归档并迁至 GitLab 官方维护,legacy-openness-matrix,2026-07-06
+aar-0121,万得,wind-skills / wind-mcp-skill,金融数据与终端,China,CLI;Skill;SDK/API,github_repo,Skill 内置 CLI 调用,有官方 Skill/MCP Skill,,高，商业授权,https://github.com/Wind-Information-Co-Ltd/wind-skills,有官方 Skill/MCP Skill,有官方 Skill/MCP Skill,高,Medium,官方 wind-skills monorepo 含 wind-mcp-skill wind-find-finance-skill wind-alice,legacy-openness-matrix,2026-07-06
+aar-0123,同花顺 iFinD,iFinD MCP 平台,金融数据与终端,China,CLI;SDK/API,official_web,MCP 平台/Token,有官方 MCP 服务；未发现官方 GitHub Skill,,中高，商业授权,https://mcp.51ifind.com,有官方 MCP 服务；未发现官方 GitHub Skill,有官方 MCP 服务；未发现官方 GitHub Skill,中高,Medium,iFinD MCP 平台提供 Auth Token 但官方 GitHub Skill 未确认,legacy-openness-matrix,2026-07-06
+aar-0143,Base,Base MCP legacy,数字货币交易,US,CLI;Skill;SDK/API,github_repo,SDK/MCP,相关,,高,https://github.com/base/base-mcp-legacy,相关,相关,高,Critical,连接 Base 网络和 Coinbase API 的 MCP,legacy-openness-matrix,2026-07-07
+aar-0138,币安,Binance Skills Hub,数字货币交易,Global,CLI;Skill;SDK/API,github_repo,CLI/Skill hub 内工具,有,,高,https://github.com/binance/binance-skills-hub,有,有,高,Critical,官方 Skills Hub 面向 AI agents 原生接入 crypto,legacy-openness-matrix,2026-07-07
+aar-0139,BNB Chain,BNB Chain Skills,数字货币交易,Global,CLI;Skill;SDK/API,github_repo,MCP 相关工具,有,,高,https://github.com/bnb-chain/bnbchain-skills,有,有,高,Critical,官方 Skills 指导使用 BNB Chain MCP server,legacy-openness-matrix,2026-07-07
+aar-0140,Coinbase,Agentic Wallet Skills,数字货币交易,US,CLI;Skill;SDK/API,github_repo,awal / AgentKit 工具链,有,,高,https://github.com/coinbase/agentic-wallet-skills,有,有,高,Critical,官方钱包交易支付 Agent Skills,legacy-openness-matrix,2026-07-07
+aar-0142,Coinbase AgentKit,AgentKit,数字货币交易,US,CLI;Skill;SDK/API,github_repo,SDK/API,相关,,高,https://github.com/coinbase/agentkit,相关,相关,高,Critical,AI agents 钱包和链上交互工具包,legacy-openness-matrix,2026-07-07
+aar-0141,Coinbase Payments MCP,Payments MCP,数字货币交易,US,CLI;Skill;SDK/API,github_repo,npx installer,有 MCP,,高,https://github.com/coinbase/payments-mcp,有 MCP,有 MCP,高,Critical,钱包 onramp x402 支付 MCP,legacy-openness-matrix,2026-07-07
+aar-0147,CoinMarketCap,CoinMarketCap Skills,数字货币交易,US/API,CLI;Skill;SDK/API,github_repo,API Skills,有,,高,https://github.com/coinmarketcap-official/skills-for-ai-agents-by-CoinMarketCap,有,有,高,Critical,官方 AI Agent Skills 覆盖 crypto DEX exchange market API,legacy-openness-matrix,2026-07-07
+aar-0146,Kraken,Kraken CLI,数字货币交易,US,CLI;Skill;SDK/API,github_repo,有 kraken-cli,CLI 内置 Agent 场景,,高,https://github.com/krakenfx/kraken-cli,CLI 内置 Agent 场景,CLI 内置 Agent 场景,高,Critical,官方 AI-native CLI 内置 MCP server,legacy-openness-matrix,2026-07-07
+aar-0144,OKX,OKX Agent Skills,数字货币交易,Global,CLI;Skill;SDK/API,github_repo,@okx_ai/okx-trade-cli,有,,高,https://github.com/okx/agent-skills,有,有,高,Critical,官方 OKX Agent Skills,legacy-openness-matrix,2026-07-07
+aar-0145,OKX Agent Trade Kit,OKX trading MCP,数字货币交易,Global,CLI;Skill;SDK/API,github_repo,CLI/MCP,有 MCP,,高,https://github.com/okx/agent-trade-kit,有 MCP,有 MCP,高,Critical,OKX trading MCP server,legacy-openness-matrix,2026-07-07
+aar-0148,Uniswap,Uniswap,数字货币交易,Global,CLI;Skill;SDK/API,official_web,SDK/API,待复核,,高,待补,待复核,待复核,中高,Critical,官方 SDK/API 成熟但 Skill/MCP 官方源需继续确认,legacy-openness-matrix,2026-07-07
+aar-0150,Bitget,Bitget,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,官方 Agent Skill/MCP 未确认,legacy-openness-matrix,2026-07-07
+aar-0153,BitMEX,BitMEX,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,衍生品交易 API 成熟但 Agent 入口未确认,legacy-openness-matrix,2026-07-07
+aar-0149,Bybit,Bybit,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,官方 Agent Skill/MCP 未确认,legacy-openness-matrix,2026-07-07
+aar-0051,CoinGecko,CoinGecko,数字货币交易,,CLI;MCP,official_web,API/SDK,未确认官方 Skill,CoinGecko MCP 线索需复核,,待补,待复核,待复核,,Critical,价格/市场数据平台；MCP/Skill 需确认官方源,legacy-platform-audit,2026-07-07
+aar-0156,CoinGecko,CoinGecko,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,高,Critical,价格和市场数据平台 MCP/Skill 官方源需确认,legacy-openness-matrix,2026-07-07
+aar-0155,DefiLlama,DefiLlama,数字货币交易,Global,CLI;SDK/API,official_web,API/数据平台,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,高,Critical,DeFi 数据开放度高 Agent 入口多为社区,legacy-openness-matrix,2026-07-07
+aar-0154,Deribit,Deribit,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,期权/衍生品交易 API 成熟但 Agent 入口未确认,legacy-openness-matrix,2026-07-07
+aar-0151,Gate.io,Gate.io,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,官方 Agent Skill/MCP 未确认,legacy-openness-matrix,2026-07-07
+aar-0152,KuCoin,KuCoin,数字货币交易,Global,CLI;SDK/API,official_web,API/SDK,未确认官方 Skill,,高,待补,未确认官方 Skill,未确认官方 Skill,中高,Critical,官方 Agent Skill/MCP 未确认,legacy-openness-matrix,2026-07-07
+aar-0042,MoonPay,MoonPay,数字货币交易,,CLI;Skill,official_web,SDK/API,官方 Skill 线索需复核源仓,未确认官方 MCP,,待补,待复核,待复核,,Critical,法币出入金平台需确认官方 Agent 入口,legacy-platform-audit,2026-07-07
+aar-0043,Nethermind,Nethermind,数字货币交易,,CLI;Skill,official_web,SDK/节点工具,官方 Skill 线索需复核源仓,未确认官方 MCP,,待补,待复核,待复核,,Critical,区块链基础设施/客户端,legacy-platform-audit,2026-07-07
+aar-0041,Uniswap,Uniswap,数字货币交易,,CLI;Skill,official_web,SDK/API,官方 Skill 线索需复核源仓,未确认官方 MCP,,待补,待复核,待复核,,Critical,DEX 头部平台官方 SDK/API 成熟,legacy-platform-audit,2026-07-07
+aar-0111,ClickHouse,ClickHouse,数据平台与数据库,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/ClickHouse/ClickHouse,有,有,高,Medium,实时分析数据库,legacy-openness-matrix,2026-07-06
+aar-0112,DuckDB,DuckDB,数据平台与数据库,Global,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/duckdb/duckdb,有,有,高,Medium,本地分析数据库,legacy-openness-matrix,2026-07-06
+aar-0110,MongoDB,mongosh,数据平台与数据库,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/mongodb-js/mongosh,有,有,高,Medium,MongoDB Shell,legacy-openness-matrix,2026-07-06
+aar-0114,Pinecone,Pinecone Skills,数据平台与数据库,US,CLI;Skill;SDK/API,github_repo,API/SDK,有,,高,https://github.com/pinecone-io/skills,有,有,高,Medium,官方 Agent Skills library,legacy-openness-matrix,2026-07-06
+aar-0113,Redis,Redis,数据平台与数据库,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/redis/redis,有,有,高,Medium,缓存和实时数据结构,legacy-openness-matrix,2026-07-06
+aar-0108,Databricks,Databricks CLI,数据平台与数据库,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/databricks/cli,未发现,未发现,中高,Medium,Lakehouse CLI,legacy-openness-matrix,2026-07-06
+aar-0109,dbt Labs,dbt Core,数据平台与数据库,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/dbt-labs/dbt-core,未发现,未发现,高,Medium,数据转换事实标准,legacy-openness-matrix,2026-07-06
+aar-0107,Snowflake,Snowflake CLI,数据平台与数据库,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/snowflakedb/snowflake-cli,未发现,未发现,中高,Medium,开发者工作流和 SQL 操作,legacy-openness-matrix,2026-07-06
+aar-0091,钉钉,DingTalk Workspace CLI,企业协作与办公,China,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,有,有,高,Medium,官方开源跨平台 CLI,legacy-openness-matrix,2026-07-06
+aar-0086,Google Workspace,Google Workspace CLI,企业协作与办公,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/VoltAgent/awesome-agent-skills,有,有,高,Medium,gws CLI skills,legacy-openness-matrix,2026-07-06
+aar-0090,飞书,larksuite/cli,企业协作与办公,China,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/larksuite/cli,有,有,高,Medium,官方 CLI 自带 20+ Agent Skills,legacy-openness-matrix,2026-07-06
+aar-0087,Microsoft,Microsoft Learn MCP,企业协作与办公,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/MicrosoftDocs/mcp,有,有,高,Medium,官方 MCP Server and CLI,legacy-openness-matrix,2026-07-06
+aar-0089,Notion,Notion,企业协作与办公,US,Skill;SDK/API,github_repo,未发现,有,,中高,https://github.com/VoltAgent/awesome-agent-skills,有,有,中高,Medium,API 开放但官方 CLI 不明显,legacy-openness-matrix,2026-07-06
+aar-0088,Slack,Slack CLI,企业协作与办公,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/slackapi/slack-cli,未发现,未发现,中高,Medium,Slack app CLI,legacy-openness-matrix,2026-07-06
+aar-0164,Angular,Angular Skills,设计前端移动,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/angular/skills,有,有,高,Medium,Angular 官方 Skills,legacy-openness-matrix,2026-07-06
+aar-0074,Azure,Azure CLI,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/Azure/azure-cli,有,有,高,Medium,Azure CLI 与 Microsoft MCP/Skill 生态,legacy-openness-matrix,2026-07-06
+aar-0076,Cloudflare,Wrangler / Workers SDK,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/cloudflare/workers-sdk,有,有,高,High,Wrangler 官方 CLI,legacy-openness-matrix,2026-07-06
+aar-0165,Expo,Expo Skills,设计前端移动,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/VoltAgent/awesome-agent-skills,有,有,高,Medium,Expo/EAS 工作流,legacy-openness-matrix,2026-07-06
+aar-0163,Figma,Figma Skills,设计前端移动,US,CLI;Skill;SDK/API,github_repo,API/Plugin,有,,中高,https://github.com/VoltAgent/awesome-agent-skills,有,有,中高,Medium,设计数据和工作流,legacy-openness-matrix,2026-07-06
+aar-0075,Firebase,Firebase Tools,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/firebase/firebase-tools,有,有,高,Medium,Firebase CLI,legacy-openness-matrix,2026-07-06
+aar-0101,Google Workspace,gws CLI,办公套件,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/VoltAgent/awesome-agent-skills,有,有,高,Medium,Drive Sheets Gmail Calendar Docs Slides 等官方 Skill,legacy-openness-matrix,2026-07-06
+aar-0081,HashiCorp,Terraform,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/hashicorp/terraform,有,有,高,Medium,IaC 事实标准,legacy-openness-matrix,2026-07-06
+aar-0096,金山文档,Kdocs / WPS 365,办公套件,China,CLI;Skill;SDK/API,github_repo,有,有,,中高,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,有,有,中高,Medium,Kdocs/WPS 365 文档对象适合 Agent 编辑和协作自动化,legacy-openness-matrix,2026-07-06
+aar-0102,Microsoft 365,Microsoft Graph / Learn MCP,办公套件,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/MicrosoftDocs/mcp,有,有,高,Medium,Microsoft Graph 和 Learn MCP/CLI 生态,legacy-openness-matrix,2026-07-06
+aar-0080,Neon,neonctl,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/neondatabase/neonctl,有,有,中高,Medium,Serverless Postgres CLI,legacy-openness-matrix,2026-07-06
+aar-0078,Netlify,Netlify CLI,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/netlify/cli,有,有,高,High,Netlify CLI and deploy skills,legacy-openness-matrix,2026-07-06
+aar-0103,Stripe,Stripe CLI,支付电商CRM通信,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/stripe/stripe-cli,有,有,高,High,支付 API 和 Webhook 自动化,legacy-openness-matrix,2026-07-06
+aar-0079,Supabase,Supabase CLI,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/supabase/cli,有,有,高,Medium,本地开发迁移和 Edge Functions,legacy-openness-matrix,2026-07-06
+aar-0077,Vercel,Vercel CLI,公有云与云原生,US,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/vercel/vercel,有,有,高,High,Deploy and preview platform,legacy-openness-matrix,2026-07-06
+aar-0166,WordPress,WP-CLI Skills,设计前端移动,Global,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/VoltAgent/awesome-agent-skills,有,有,高,Medium,CMS 运维和内容管理,legacy-openness-matrix,2026-07-06
+aar-0092,金山文档,WPS AirPage Skill,文档与知识库,China,CLI;Skill;SDK/API,github_repo,有,有,,中高,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,有,有,中高,Medium,本地 CLI 操作 WPS 365 AirPage,legacy-openness-matrix,2026-07-06
+aar-0097,WPS 365 AirPage,WPS-AirPage-Skill,办公套件,China,CLI;Skill;SDK/API,github_repo,有,有,,中高,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,有,有,中高,Medium,本地 CLI 创建编辑智能文档块表格图片评论,legacy-openness-matrix,2026-07-06
+aar-0093,语雀,Yuque Ecosystem,文档与知识库,China,CLI;Skill;SDK/API,github_repo,通过 MCP/Plugin,有,,中高,https://github.com/yuque/yuque-ecosystem,有,有,中高,Medium,MCP Server Skills Plugin,legacy-openness-matrix,2026-07-06
+aar-0100,语雀,Yuque Knowledge Base,办公套件,China,CLI;Skill;SDK/API,github_repo,通过 MCP/Plugin,有,,中高,https://github.com/yuque/yuque-ecosystem,有,有,中高,Medium,团队知识库搜索写作会议纪要和周报,legacy-openness-matrix,2026-07-06
+aar-0099,钉钉文档,DingTalk Workspace,办公套件,China,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,有,有,高,Medium,钉钉官方 Workspace CLI 面向 AI Agent 场景,legacy-openness-matrix,2026-07-06
+aar-0098,飞书云文档,Lark Docs / Drive / Sheets,办公套件,China,CLI;Skill;SDK/API,github_repo,有,有,,高,https://github.com/larksuite/cli,有,有,高,Medium,飞书 CLI 覆盖文档云盘表格知识库等办公对象,legacy-openness-matrix,2026-07-06
+aar-0082,Alibaba Cloud,Alibaba Cloud CLI,公有云与云原生,China,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/aliyun/aliyun-cli,未发现,未发现,高,High,基于 Alibaba Cloud OpenAPI,legacy-openness-matrix,2026-07-06
+aar-0073,AWS,AWS CLI,公有云与云原生,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/aws/aws-cli,未发现,未发现,高,Medium,通用 AWS 命令行工具,legacy-openness-matrix,2026-07-06
+aar-0084,Huawei Cloud,Huawei Cloud Skills,公有云与云原生,China,Skill;SDK/API,github_repo,待补,有,,高,https://github.com/huaweicloud/huaweicloud-skills,有,有,中高,High,官方 Agent Skills,legacy-openness-matrix,2026-07-06
+aar-0116,IPinfo,IPinfo CLI,数据供应商,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/ipinfo/cli,未发现,未发现,高,Medium,IP 地理位置和网络数据 CLI,legacy-openness-matrix,2026-07-06
+aar-0115,Kaggle,Kaggle CLI,数据供应商,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/Kaggle/kaggle-cli,未发现,未发现,高,Medium,官方 Kaggle CLI,legacy-openness-matrix,2026-07-06
+aar-0117,Massive / Polygon.io,client-python,数据供应商,US,CLI;SDK/API,github_repo,SDK,未发现,,高,https://github.com/massive-com/client-python,未发现,未发现,中高,Medium,金融市场 API Python client,legacy-openness-matrix,2026-07-06
+aar-0105,Salesforce,sf CLI,支付电商CRM通信,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/salesforcecli/cli,未发现,未发现,中高,High,CRM CLI,legacy-openness-matrix,2026-07-06
+aar-0104,Shopify,Shopify CLI,支付电商CRM通信,Canada,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/Shopify/cli,未发现,未发现,高,High,Apps Themes Hydrogen,legacy-openness-matrix,2026-07-06
+aar-0083,Tencent Cloud,TCCLI,公有云与云原生,China,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/TencentCloud/tencentcloud-cli,未发现,未发现,高,High,Tencent Cloud API 3.0 CLI,legacy-openness-matrix,2026-07-06
+aar-0106,Twilio,Twilio CLI,支付电商CRM通信,US,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/twilio/twilio-cli,未发现,未发现,高,High,通信 API CLI,legacy-openness-matrix,2026-07-06
+aar-0085,Volcengine,Volcengine CLI,公有云与云原生,China,CLI;SDK/API,github_repo,有,未发现,,高,https://github.com/volcengine/volcengine-cli,未发现,未发现,高,Medium,调用和管理火山引擎 OpenAPI,legacy-openness-matrix,2026-07-06
+aar-0118,X API,xurl,数据供应商,US,CLI;SDK/API,github_repo,有,未发现,,中高,https://github.com/xdevplatform/xurl,未发现,未发现,中,Medium,X API CLI 生态,legacy-openness-matrix,2026-07-06
+aar-0095,Zotero,Zotero,文档与知识库,Global,SDK/API,github_repo,未发现,未发现,,中高,https://github.com/zotero/zotero,未发现,未发现,中,Medium,官方 Skill 缺位,legacy-openness-matrix,2026-07-06

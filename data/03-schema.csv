@@ -1,0 +1,53 @@
+table_name,field_name,data_type,required,description_en,description_zh,display_order
+data_sources,resource_id,TEXT,yes,Stable resource identifier.,稳定的资源条目 ID。,1
+data_sources,platform_en,TEXT,no,"English platform, company, or project name.",平台、公司或项目英文名。,2
+data_sources,platform_zh,TEXT,no,"Chinese platform, company, or project name when available.",平台、公司或项目中文名。,3
+data_sources,product_or_resource,TEXT,no,"Product, data resource, repository, API, SDK, CLI, MCP, or Skill name.",产品、数据资源、仓库、API、SDK、CLI、MCP 或 Skill 名称。,4
+data_sources,domain_en,TEXT,no,English industry or domain.,英文行业或领域。,5
+data_sources,domain_zh,TEXT,no,Chinese industry or domain.,中文行业或领域。,6
+data_sources,country_region,TEXT,no,Country or region when known.,已知的国家或地区。,7
+data_sources,resource_formats,TEXT,no,"Semicolon-delimited access formats such as CLI, MCP, Skill, SDK/API, Plugin, or Data export.",分号分隔的访问格式，例如 CLI、MCP、Skill、SDK/API、Plugin、Data export。,8
+data_sources,source_format,TEXT,no,"Primary evidence/source format, such as GitHub repo, official docs, web page, API docs, or dataset portal.",主要证据或来源格式，例如 GitHub 仓库、官方文档、网页、API 文档或数据门户。,9
+data_sources,official_cli,TEXT,no,Official CLI status or evidence.,官方 CLI 状态或证据。,10
+data_sources,official_skill,TEXT,no,Official Agent Skill status or evidence.,官方 Agent Skill 状态或证据。,11
+data_sources,official_mcp,TEXT,no,Official MCP status or evidence.,官方 MCP 状态或证据。,12
+data_sources,official_sdk_api,TEXT,no,Official SDK/API status or evidence.,官方 SDK/API 状态或证据。,13
+data_sources,source_url,TEXT,no,Primary official or evidence URL.,主要官方来源或证据 URL。,14
+data_sources,official_status_en,TEXT,no,English official-source status.,英文官方来源状态。,15
+data_sources,official_status_zh,TEXT,no,Chinese official-source status.,中文官方来源状态。,16
+data_sources,verification_status,TEXT,no,Original verification/status value.,原始复核或状态值。,17
+data_sources,openness_level,TEXT,no,Interface/data openness level where available.,接口或数据开放程度。,18
+data_sources,risk_level,TEXT,no,Rough risk label for the access surface.,访问面的粗略风险标签。,19
+data_sources,description_en,TEXT,no,English notes or description.,英文说明。,20
+data_sources,description_zh,TEXT,no,Chinese notes or description.,中文说明。,21
+data_sources,source_dataset,TEXT,no,Original source or import batch.,原始来源或导入批次。,22
+data_sources,checked_at,TEXT,no,Last checked date.,最近检查日期。,23
+data_sources,sort_order,INTEGER,no,User-facing display priority.,面向用户的展示排序。,24
+schema_fields,table_name,TEXT,yes,SQLite table name.,SQLite 表名。,1
+schema_fields,field_name,TEXT,yes,Field name.,字段名。,2
+schema_fields,data_type,TEXT,no,SQLite data type.,SQLite 数据类型。,3
+schema_fields,required,TEXT,no,Whether the field is required.,字段是否必填。,4
+schema_fields,description_en,TEXT,no,English field description.,英文字段说明。,5
+schema_fields,description_zh,TEXT,no,Chinese field description.,中文字段说明。,6
+schema_fields,display_order,INTEGER,no,Display order.,展示顺序。,7
+tracked_entities,entity_id,TEXT,yes,Stable tracked entity identifier.,稳定的追踪对象 ID。,1
+tracked_entities,entity_name_en,TEXT,no,"English entity, company, platform, or public data source name.",追踪对象、公司、平台或公共数据源英文名。,2
+tracked_entities,entity_name_zh,TEXT,no,Chinese entity name when available.,追踪对象中文名。,3
+tracked_entities,entity_type,TEXT,no,"Entity type such as public data source, software platform, company, or professional software.",对象类型，例如公共数据源、软件平台、公司或专业软件。,4
+tracked_entities,domain_zh,TEXT,no,Chinese domain for tracking.,追踪对象中文领域。,5
+tracked_entities,domain_en,TEXT,no,English domain for tracking.,追踪对象英文领域。,6
+tracked_entities,country_region,TEXT,no,Country or region when known.,已知国家或地区。,7
+tracked_entities,official_homepage,TEXT,no,Official homepage.,官方网站。,8
+tracked_entities,primary_github,TEXT,no,Primary official GitHub org/repo.,主要官方 GitHub 组织或仓库。,9
+tracked_entities,primary_docs,TEXT,no,Primary official documentation.,主要官方文档。,10
+tracked_entities,commercial_model,TEXT,no,"Free, paid, mixed, or access model notes.",免费、收费、混合或访问模式说明。,11
+tracked_entities,tracking_status,TEXT,no,Tracking status.,追踪状态。,12
+tracked_entities,index_status,TEXT,no,Whether this entity already has indexed resources.,该对象是否已有入库资源。,13
+tracked_entities,watch_count,TEXT,no,Number of watch sources attached to this entity.,该对象关联的追踪源数量。,14
+tracked_entities,candidate_count,TEXT,no,Latest discovered candidate count.,最近发现的候选数量。,15
+tracked_entities,last_discovered_at,TEXT,no,Latest discovery timestamp.,最近发现时间。,16
+tracked_entities,last_reviewed_at,TEXT,no,Latest review date.,最近审查日期。,17
+tracked_entities,last_promoted_at,TEXT,no,Latest database promotion date.,最近入库日期。,18
+tracked_entities,notes,TEXT,no,Public non-private tracking notes.,公开、非隐私追踪说明。,19
+tracked_entities,checked_at,TEXT,no,Last checked date.,最近检查日期。,20
+tracked_entities,watch_sources_json,TEXT,no,"JSON array of official websites, RSS/Atom feeds, GitHub sources, docs, or public pages to track.",官方站点、RSS/Atom、GitHub、文档或公开页面追踪源 JSON 数组。,21

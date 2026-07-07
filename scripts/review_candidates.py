@@ -4,13 +4,14 @@
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 import re
 import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
+
+from index_store import known_urls as load_index_known_urls
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,22 +84,7 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def load_known_urls() -> set[str]:
-    urls: set[str] = set()
-    for path in [
-        DATA / "01-access-resources.csv",
-        DATA / "02-platforms.csv",
-        DATA / "03-vendor-openness-matrix.csv",
-        DATA / "04-agent-skill-ecosystem.csv",
-    ]:
-        if not path.exists():
-            continue
-        with path.open(newline="", encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                for key in ("source_url", "official_source_url", "github_url"):
-                    url = (row.get(key) or "").strip().rstrip("/")
-                    if url and url not in {"待补", "todo", "tbd", "n/a", "na"}:
-                        urls.add(url)
-    return urls
+    return load_index_known_urls()
 
 
 def review(candidate: dict[str, Any], known_urls: set[str]) -> dict[str, Any]:

@@ -7,21 +7,21 @@ repository remains easy to run locally.
 
 from __future__ import annotations
 
-import csv
 import json
 import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from index_store import data_sources
+
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "data" / "01-access-resources.csv"
 
 
 def load_rows() -> list[dict[str, str]]:
-    with DATA_PATH.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+    return [{key: str(value or "") for key, value in row.items()} for row in data_sources()]
 
 
 ROWS = load_rows()
@@ -61,7 +61,7 @@ def compact(row: dict[str, str]) -> dict[str, str]:
         "product_or_resource",
         "domain_en",
         "domain_zh",
-        "access_resource_types",
+        "resource_formats",
         "source_url",
         "official_status_en",
         "official_status_zh",
@@ -84,7 +84,7 @@ def filter_by_resource_type(resource_type: str, limit: int = 50) -> list[dict[st
     return [
         compact(row)
         for row in ROWS
-        if needle in row.get("access_resource_types", "").lower()
+        if needle in row.get("resource_formats", "").lower()
     ][:limit]
 
 
@@ -92,7 +92,7 @@ def list_official_mcp(limit: int = 50) -> list[dict[str, str]]:
     return [
         compact(row)
         for row in ROWS
-        if "mcp" in row.get("access_resource_types", "").lower()
+        if "mcp" in row.get("resource_formats", "").lower()
         and "未" not in row.get("official_mcp", "")
         and "unconfirmed" not in row.get("official_status_en", "").lower()
     ][:limit]
@@ -114,7 +114,7 @@ def industry_summary(domain: str | None = None) -> dict[str, Any]:
         "resource_types": Counter(
             item
             for row in rows
-            for item in row.get("access_resource_types", "").split(";")
+            for item in row.get("resource_formats", "").split(";")
             if item
         ).most_common(),
         "risk_levels": Counter(row.get("risk_level", "") for row in rows).most_common(),
@@ -253,4 +253,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

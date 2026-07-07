@@ -8,7 +8,6 @@ index; candidates must be reviewed before they are promoted into CSV data.
 from __future__ import annotations
 
 import argparse
-import csv
 import html
 import json
 import os
@@ -23,35 +22,23 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from index_store import known_urls as load_index_known_urls
+from index_store import watchlist_rows
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-WATCHLIST_PATH = DATA / "06-tracking-watchlist.csv"
 CANDIDATES_DIR = DATA / "09-candidates"
 
 
 def load_watchlist(path: Path) -> list[dict[str, str]]:
-    with path.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+    if str(path) == "__sqlite__":
+        return watchlist_rows()
+    raise ValueError("watchlist CSV input has been retired; use the SQLite primary index")
 
 
 def load_known_urls() -> set[str]:
-    urls: set[str] = set()
-    for path in [
-        DATA / "01-access-resources.csv",
-        DATA / "02-platforms.csv",
-        DATA / "03-vendor-openness-matrix.csv",
-        DATA / "04-agent-skill-ecosystem.csv",
-    ]:
-        if not path.exists():
-            continue
-        with path.open(newline="", encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                for key in ("source_url", "official_source_url", "github_url"):
-                    url = (row.get(key) or "").strip()
-                    if url:
-                        urls.add(normalize_url(url))
-    return urls
+    return load_index_known_urls()
 
 
 def normalize_url(url: str) -> str:
@@ -326,7 +313,7 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Discover candidate access resources.")
-    parser.add_argument("--watchlist", default=str(WATCHLIST_PATH))
+    parser.add_argument("--watchlist", default="__sqlite__")
     parser.add_argument("--limit-per-source", type=int, default=20)
     parser.add_argument("--output", default="")
     args = parser.parse_args()

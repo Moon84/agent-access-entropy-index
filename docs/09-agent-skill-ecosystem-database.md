@@ -4,7 +4,9 @@ This document explains the purpose and maintenance rules for the Agent Skill eco
 
 For the actual records, use:
 
-- [`../data/04-agent-skill-ecosystem.csv`](../data/04-agent-skill-ecosystem.csv)
+- [`../data/01-index.sqlite`](../data/01-index.sqlite), table `data_sources`
+- [`../data/01-data-sources.en.csv`](../data/01-data-sources.en.csv)
+- [`../data/01-data-sources.zh-CN.csv`](../data/01-data-sources.zh-CN.csv)
 - [`06-reverse-platform-audit.md`](06-reverse-platform-audit.md)
 - [`07-vendor-openness-matrix.md`](07-vendor-openness-matrix.md)
 - [`08-official-skill-mcp-audit.md`](08-official-skill-mcp-audit.md)
@@ -49,29 +51,24 @@ The dataset focuses on:
 
 ## Fields
 
-The CSV uses these fields:
+The `data_sources` table uses these fields:
 
 | Field | Description |
 |---|---|
-| `id` | Stable row identifier. |
-| `company` | Company, vendor, project, or maintainer. |
-| `product` | Product, platform, repository, or skill name. |
+| `resource_id` | Stable row identifier. |
+| `platform_en` / `platform_zh` | Company, vendor, project, or maintainer. |
+| `product_or_resource` | Product, platform, repository, or skill name. |
 | `country_region` | Country or region when known. |
-| `industry` | Industry/category. |
-| `status` | Official status label. |
-| `skill_type` | Access path type. |
-| `github_url` | GitHub or official source URL. |
-| `stars` | GitHub stars at time of collection, when available. |
-| `skill_count` | Number of skills if the source is a skill collection. |
-| `cli_relevance` | High / medium / low relevance to CLI usage. |
-| `china_relevance` | High / medium / low relevance to China or Chinese-language platform ecosystems. |
-| `leading_reason` | Short reason for inclusion. |
-| `notes` | Additional notes. |
+| `domain_en` / `domain_zh` | Industry/category. |
+| `official_status_en` / `official_status_zh` | Official status label. |
+| `resource_formats` | Access path type. |
+| `source_url` | GitHub or official source URL. |
+| `description_en` / `description_zh` | Additional notes. |
 | `checked_at` | Last checked date. |
 
 ## Verification Rules
 
-Use the repository-wide [Verification Policy](VERIFICATION_POLICY.md).
+Use the repository-wide [Verification Policy](02-verification-policy.md).
 
 In short, mark a source as official only when at least one condition is met:
 
@@ -85,7 +82,7 @@ If evidence is incomplete, use a weaker status such as community, quasi-official
 
 - Keep this document as methodology and data documentation only.
 - Do not list individual companies, products, or rankings here.
-- Put records in CSV files under [`../data`](../data).
+- Put records in the SQLite `data_sources` table and regenerate readable CSV exports.
 - Put narrative audits and industry observations in the dedicated audit documents.
 - Prefer source URLs over copied descriptions.
 - Avoid promotional wording.
@@ -95,7 +92,7 @@ If evidence is incomplete, use a weaker status such as community, quasi-official
 
 | Document | Purpose |
 |---|---|
-| [Data Dictionary](DATA_DICTIONARY.md) | Field definitions for all CSV files. |
-| [Methodology](METHODOLOGY.md) | Agent Access Entropy scoring approach. |
-| [Verification Policy](VERIFICATION_POLICY.md) | Official-source classification rules. |
-| [Disclaimer](DISCLAIMER.md) | Legal, security, finance, and trademark disclaimers. |
+| [Data Dictionary](03-data-dictionary.md) | Field definitions for the SQLite tables and CSV exports. |
+| [Methodology](01-methodology.md) | Agent Access Entropy scoring approach. |
+| [Verification Policy](02-verification-policy.md) | Official-source classification rules. |
+| [Disclaimer](11-disclaimer.md) | Legal, security, finance, and trademark disclaimers. |

@@ -1,24 +1,6 @@
 # Query Guide
 
-This project is designed for both human and AI-agent usage.
-
-## Recommended Files
-
-| File | Best for |
-|---|---|
-| `data/01-access-resources.csv` | Spreadsheet tools, manual review, GitHub preview. |
-| `data/01-access-resources.jsonl` | Agent/RAG pipelines, streaming reads, `jq`, line-by-line processing. |
-| `data/01-access-resources.sqlite` | Local SQL queries, filtering, aggregation. |
-| `data/07-schema.json` | Field validation and tool integration. |
-| `data/08-manifest.json` | Version, row count, generated files, and checksums. |
-
-`data/01-access-resources.csv` is the primary dataset. All other files above are derived from it.
-
-Regenerate derived files after editing the CSV:
-
-```bash
-python3 scripts/export_formats.py
-```
+Use [`../data/01-index.sqlite`](../data/01-index.sqlite) as the primary dataset. The CSV files are readable exports for review and GitHub browsing.
 
 ## SQLite Examples
 
@@ -26,16 +8,16 @@ List confirmed or likely official MCP resources:
 
 ```sql
 SELECT platform_en, platform_zh, product_or_resource, source_url
-FROM access_resources
-WHERE access_resource_types LIKE '%MCP%'
+FROM data_sources
+WHERE resource_formats LIKE '%MCP%'
   AND official_mcp NOT LIKE '%未%';
 ```
 
 Search a platform:
 
 ```sql
-SELECT platform_en, platform_zh, access_resource_types, source_url
-FROM access_resources
+SELECT platform_en, platform_zh, resource_formats, source_url
+FROM data_sources
 WHERE platform_en LIKE '%Wind%'
    OR platform_zh LIKE '%万得%'
    OR product_or_resource LIKE '%Wind%';
@@ -45,23 +27,17 @@ Summarize by domain:
 
 ```sql
 SELECT domain_en, COUNT(*) AS count
-FROM access_resources
+FROM data_sources
 GROUP BY domain_en
 ORDER BY count DESC;
 ```
 
-## JSONL Examples
+Inspect tracked entities and their watch-source count:
 
-Find crypto trading resources:
-
-```bash
-jq 'select(.domain_en == "Crypto trading")' data/01-access-resources.jsonl
-```
-
-Find official MCP-like resources:
-
-```bash
-jq 'select(.access_resource_types | contains("MCP"))' data/01-access-resources.jsonl
+```sql
+SELECT entity_name_en, domain_en, watch_count, candidate_count, index_status
+FROM tracked_entities
+ORDER BY domain_en, entity_name_en;
 ```
 
 ## MCP Server

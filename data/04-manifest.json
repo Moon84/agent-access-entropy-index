@@ -1,0 +1,50 @@
+{
+  "name": "agent-access-entropy-index",
+  "version": "0.1.0",
+  "generated_at": "2026-07-07",
+  "primary_data": "data/01-index.sqlite",
+  "tables": [
+    "data_sources",
+    "tracked_entities",
+    "schema_fields"
+  ],
+  "readable_exports": [
+    "data/01-data-sources.zh-CN.csv",
+    "data/01-data-sources.en.csv",
+    "data/02-tracked-entities.zh-CN.csv",
+    "data/02-tracked-entities.en.csv",
+    "data/03-schema.csv"
+  ],
+  "counts": {
+    "data_sources": 202,
+    "tracked_entities": 10,
+    "schema_fields": 52
+  },
+  "files": {
+    "data/01-index.sqlite": {
+      "bytes": 139264,
+      "sha256": "17cb76158fa100a84fcefc8cf52fedccb1ba7bf25dccdcc5219fd1d4286a4c3e"
+    },
+    "data/01-data-sources.zh-CN.csv": {
+      "bytes": 50675,
+      "sha256": "b5d045f699c09f9b3b687fbb69a19ef77e4d0653138cffea1f5b00aa507b9830"
+    },
+    "data/01-data-sources.en.csv": {
+      "bytes": 44997,
+      "sha256": "f3733168c74e587a53c8ab9235343797aa792ef397bad8c5778b435cea415c23"
+    },
+    "data/02-tracked-entities.zh-CN.csv": {
+      "bytes": 2949,
+      "sha256": "4b854a4f69e6d149b3c936ad3a369503851acc5d09341709268eb498a4b5cbb5"
+    },
+    "data/02-tracked-entities.en.csv": {
+      "bytes": 3020,
+      "sha256": "03d552f57d1166ea81caa98b7171fe9f82f0051ac6f5a087e7755f58ec2c2386"
+    },
+    "data/03-schema.csv": {
+      "bytes": 5916,
+      "sha256": "bba4d085549197e3af95d877077cba4efd6a27e7d903c31e49ce76e8f75128d0"
+    }
+  },
+  "sync_rule": "Use data/01-index.sqlite as the primary store. Regenerate readable CSV exports and README statistics with scripts/export_formats.py."
+}

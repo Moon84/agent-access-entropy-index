@@ -1,21 +1,12 @@
 # Candidate Tracking System
 
-This project can run scheduled discovery and pre-review for new access-resource candidates.
-
-The tracking system is intentionally conservative:
-
-- It writes candidates into `data/09-candidates/`.
-- It does not modify the primary CSV database.
-- Agent or human review must confirm evidence before promotion.
-- Medical and biological tracking is limited to public, publicly obtainable, or commercially licensed data resources and public/professional software. It excludes private patient data, PHI, PII, hospital-internal systems, and institution-internal datasets.
+The tracking system follows public, official, or commercially obtainable sources only. It excludes private patient data, PHI, PII, hospital-internal systems, institution-internal datasets, and proprietary non-public data.
 
 ## Pipeline
 
 ```text
-data/05-tracked-entities.csv
-        |
-        v
-data/06-tracking-watchlist.csv
+data/01-index.sqlite
+  tracked_entities.watch_sources_json
         |
         v
 scripts/discover_candidates.py
@@ -34,73 +25,37 @@ data/09-candidates/review-queue.md
 scripts/sync_tracking_status.py
         |
         v
-data/05-tracked-entities.csv
+data/01-index.sqlite
+data/02-tracked-entities.*.csv
 ```
-
-## Discovery
-
-Run discovery locally:
-
-```bash
-python3 scripts/discover_candidates.py
-```
-
-The script follows the persistent watchlist in `data/06-tracking-watchlist.csv`. Set `GITHUB_TOKEN` to increase GitHub rate limits.
 
 ## Tracked Entities
 
-`data/05-tracked-entities.csv` is the company/platform/resource base table. It stores stable entity information and tracking status. The watchlist links back to it through `entity_id`.
+The "待追踪 list" lives in the `tracked_entities` table. Each entity can include multiple sources in `watch_sources_json`.
 
-Use this table to answer:
-
-- Which companies, datasets, platforms, or software projects are tracked?
-- Which tracked entities are already indexed?
-- Which ones have candidate updates?
-- Which ones need review or are paused?
-
-Important fields:
+Typical watch-source fields:
 
 | Field | Meaning |
 |---|---|
-| `entity_id` | Stable entity key used by watchlist and candidate records. |
-| `entity_name_en` / `entity_name_zh` | Company, platform, dataset, or software name. |
-| `entity_type` | `Public data source`, `Professional software`, `Software platform`, etc. |
-| `official_homepage` | Primary official home page. |
-| `primary_github` | Main official GitHub org/repo when available. |
-| `primary_docs` | Main official documentation or developer page. |
-| `commercial_model` | Free, open source, subscription, commercial, institution license, etc. |
-| `tracking_status` | `active`, `paused`, `needs_review`, or another local status. |
-| `index_status` | `indexed`, `not_indexed`, `partial`, or local review status. |
-| `watch_count` | Number of watchlist rows linked to the entity. |
-| `candidate_count` | Latest discovered candidate count linked to the entity. |
-| `last_discovered_at` / `last_reviewed_at` / `last_promoted_at` | Lifecycle timestamps. |
-
-## Watchlist
-
-The watchlist is the system's "待追踪 list". Each row describes one official source to follow for a tracked entity.
-
-| Field | Meaning |
-|---|---|
-| `watch_id` | Stable tracking ID. |
-| `entity_id` | Links this source to `data/05-tracked-entities.csv`. |
-| `domain_zh` / `domain_en` | Domain for candidate classification. |
+| `watch_id` | Stable tracking source ID. |
+| `entity_id` | Linked tracked entity. |
 | `target_name` | Vendor, platform, database, software, or official project name. |
 | `source_type` | `github_org`, `github_user`, `github_repo`, `rss`, `atom`, or `web_page`. |
 | `source_url` | Official source to poll. |
 | `official_homepage` | Official home page for double-checking. |
 | `keywords` | Semicolon-delimited filters such as `cli;mcp;sdk;api;skill;SKILL.md`. |
 | `exclude_terms` | Boundary filters for private, patient-level, or internal data. |
-| `notes` | Why this source is tracked. |
-| `checked_at` | Last manual review date. |
 
 Only matching items become candidates. Non-matching updates stay out of the review queue.
 
 ## Review
 
-Run pre-review:
+Run the local pipeline:
 
 ```bash
+python3 scripts/discover_candidates.py
 python3 scripts/review_candidates.py
+python3 scripts/sync_tracking_status.py
 ```
 
 The review step assigns a rule-based recommendation:
@@ -110,45 +65,23 @@ The review step assigns a rule-based recommendation:
 | `Candidate - likely official` | Strong candidate, but still needs evidence confirmation. |
 | `Candidate - needs evidence` | Relevant machine-access signal found; official status is not yet clear. |
 | `Low priority` | Weak or noisy candidate. |
-| `Duplicate` | Already appears in source data. |
+| `Duplicate` | Already appears in `data_sources`. |
 | `Rejected - boundary` | Appears to cross private, patient-level, or sensitive-data boundaries. |
 
 ## Promotion
 
-Before a candidate enters the primary database, confirm at least one evidence source:
+Before a candidate enters `data_sources`, confirm:
 
-- Official GitHub organization.
-- Official vendor or institution domain.
-- Official documentation.
-- Product-team README or release note.
+- The candidate came from an official website, RSS/Atom feed, GitHub org/repo, docs page, or product-team source.
+- The source exposes CLI, MCP, SDK, API, Agent Skill, webhook, data export, or another machine-readable interface.
+- The resource is public, publicly obtainable, or commercially licensed.
+- The evidence URL is stable enough to cite.
 
-Then add it to the relevant source table:
-
-- `data/03-vendor-openness-matrix.csv` for industry-level coverage.
-- `data/02-platforms.csv` for reverse lookup by platform/software name.
-- `data/04-agent-skill-ecosystem.csv` for Agent Skill ecosystem entries.
-
-After editing source CSV files, regenerate derived files:
+After updating SQLite, regenerate readable exports and README statistics:
 
 ```bash
-python3 scripts/build_access_resources.py
 python3 scripts/export_formats.py
 ```
-
-Then sync entity tracking status:
-
-```bash
-python3 scripts/sync_tracking_status.py
-```
-
-## Double Check
-
-Before promotion, the reviewer should check:
-
-- The candidate came from an official website, RSS/Atom feed, GitHub org, or official repository.
-- The source actually exposes CLI, MCP, SDK, API, Agent Skill, webhook, data export, or a machine-readable interface.
-- The data/resource is public, publicly obtainable, or commercially licensed; it does not require private patient data, PHI, PII, or internal institutional access.
-- The official evidence URL is stable enough to cite in the CSV.
 
 ## Scheduled Runs
 

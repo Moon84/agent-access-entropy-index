@@ -3,56 +3,55 @@
 
 from __future__ import annotations
 
-import csv
 import json
 from collections import Counter
 from pathlib import Path
 
+from index_store import DATA, MANIFEST_PATH, ROOT, data_sources, tracked_entities
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data"
+
 START = "<!-- resource-stats:start -->"
 END = "<!-- resource-stats:end -->"
 
 
-def read_csv(path: Path) -> list[dict[str, str]]:
-    if not path.exists():
-        return []
-    with path.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
-
-
 def manifest() -> dict[str, object]:
-    path = DATA / "08-manifest.json"
-    if not path.exists():
+    if not MANIFEST_PATH.exists():
         return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
 def stats() -> dict[str, object]:
-    access = read_csv(DATA / "01-access-resources.csv")
-    platforms = read_csv(DATA / "02-platforms.csv")
+    access = data_sources()
+    entities = tracked_entities()
     manifest_data = manifest()
     domain_en = Counter(row.get("domain_en", "") for row in access if row.get("domain_en"))
     domain_zh = Counter(row.get("domain_zh", "") for row in access if row.get("domain_zh"))
+    platforms = {
+        (row.get("platform_en") or row.get("platform_zh") or "").strip().lower()
+        for row in access
+        if row.get("platform_en") or row.get("platform_zh")
+    }
+    tracked_names = {
+        (row.get("entity_name_en") or row.get("entity_name_zh") or "").strip().lower()
+        for row in entities
+        if row.get("entity_name_en") or row.get("entity_name_zh")
+    }
 
     return {
         "version": manifest_data.get("version", ""),
         "generated_at": manifest_data.get("generated_at", ""),
         "access_count": len(access),
-        "platform_count": len(platforms),
+        "platform_count": len(platforms | tracked_names),
         "domain_count": len(domain_zh or domain_en),
         "domain_top_en": domain_en.most_common(5),
         "domain_top_zh": domain_zh.most_common(5),
+        "primary_data": manifest_data.get("primary_data", "data/01-index.sqlite"),
     }
 
 
 def english_block(values: dict[str, object]) -> str:
-    top = "\n".join(f"- {name}: {count}" for name, count in values["domain_top_en"])
     return f"""{START}
 ## Dataset Snapshot
-
-Current coverage:
 
 | Metric | Count |
 |---|---:|
@@ -60,32 +59,21 @@ Current coverage:
 | Platforms / software | {values["platform_count"]} |
 | Industries / domains | {values["domain_count"]} |
 
-Largest domains:
-
-{top}
-
-Dataset version: `{values["version"]}`.
+Primary data: `{values["primary_data"]}`. Version: `{values["version"]}`.
 {END}"""
 
 
 def chinese_block(values: dict[str, object]) -> str:
-    top = "\n".join(f"- {name}: {count}" for name, count in values["domain_top_zh"])
     return f"""{START}
 ## 数据集概览
 
-当前覆盖范围：
-
 | 指标 | 数量 |
 |---|---:|
-| 访问资源 | {values["access_count"]} |
+| 可及性资源 | {values["access_count"]} |
 | 平台 / 软件 | {values["platform_count"]} |
 | 行业 / 领域 | {values["domain_count"]} |
 
-收录最多的领域：
-
-{top}
-
-数据集版本：`{values["version"]}`。
+主数据：`{values["primary_data"]}`。版本：`{values["version"]}`。
 {END}"""
 
 
@@ -96,17 +84,16 @@ def replace_block(path: Path, block: str, insert_after: str) -> None:
         after = text.split(END, 1)[1].lstrip()
         updated = f"{before}\n\n{block}\n\n{after}"
     else:
-        marker = insert_after
-        if marker not in text:
-            raise ValueError(f"insert marker not found in {path}: {marker}")
-        updated = text.replace(marker, f"{marker}\n\n{block}", 1)
+        if insert_after not in text:
+            raise ValueError(f"insert marker not found in {path}: {insert_after}")
+        updated = text.replace(insert_after, f"{insert_after}\n\n{block}", 1)
     path.write_text(updated, encoding="utf-8")
 
 
 def main() -> None:
     values = stats()
-    replace_block(ROOT / "README.md", english_block(values), "Candidate outputs are written to `data/09-candidates/`. They are pre-review signals, not verified database entries.")
-    replace_block(ROOT / "README.zh-CN.md", chinese_block(values), "候选结果会进入 `data/09-candidates/`。这些是预审信号，不是已确认入库记录。")
+    replace_block(ROOT / "README.md", english_block(values), "Information entropy is the first principle of the AI era.")
+    replace_block(ROOT / "README.zh-CN.md", chinese_block(values), "信息熵是AI时代的第一性原理")
     print("updated README resource statistics")
 
 
