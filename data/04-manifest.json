@@ -26,12 +26,12 @@
       "sha256": "17cb76158fa100a84fcefc8cf52fedccb1ba7bf25dccdcc5219fd1d4286a4c3e"
     },
     "data/01-data-sources.zh-CN.csv": {
-      "bytes": 50472,
-      "sha256": "501c25fbd8969b7d2a6fa3ac81cc7042f7444a2c0f6be057990dd596350b1e1c"
+      "bytes": 51208,
+      "sha256": "71aa21828aa47e793c8fc978e72884a891dfff3e4ab47102f6da89fa4b44ffb5"
     },
     "data/01-data-sources.en.csv": {
-      "bytes": 47030,
-      "sha256": "2200ffedf304b13556cd6c3c5574e8b574651832218d6ec45b309ad387f5de99"
+      "bytes": 47750,
+      "sha256": "fa55ebb1a438c34887e10e8b6d336f775ec40c428e1a730d98c24a95ed923d31"
     },
     "data/02-tracked-entities.zh-CN.csv": {
       "bytes": 2938,

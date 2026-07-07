@@ -21,6 +21,60 @@ The primary store is [`../data/01-index.sqlite`](../data/01-index.sqlite). CSV f
 | [`../data/03-schema.csv`](../data/03-schema.csv) | Export for `schema_fields`. |
 | [`../data/04-manifest.json`](../data/04-manifest.json) | Version, table counts, generated files, and checksums. |
 
+## Editing Headers
+
+The SQLite table keeps stable machine-facing field names. The readable CSV exports use editor-friendly headers.
+
+Chinese export order:
+
+| Header | SQLite field |
+|---|---|
+| `ID` | `resource_id` |
+| `排序` | `sort_order` |
+| `行业/领域` | `domain_zh` |
+| `平台/公司` | `platform_zh` |
+| `产品/资源` | `product_or_resource` |
+| `国家/地区` | `country_region` |
+| `可及性类型` | `resource_formats` |
+| `来源类型` | `source_format` |
+| `官方/证据URL` | `source_url` |
+| `官方性状态` | `official_status_zh` |
+| `复核状态` | `verification_status` |
+| `CLI证据` | `official_cli` |
+| `Skill证据` | `official_skill` |
+| `MCP证据` | `official_mcp` |
+| `SDK/API证据` | `official_sdk_api` |
+| `开放程度` | `openness_level` |
+| `风险等级` | `risk_level` |
+| `备注` | `description_zh` |
+| `导入批次` | `source_dataset` |
+| `检查日期` | `checked_at` |
+
+English export order:
+
+| Header | SQLite field |
+|---|---|
+| `id` | `resource_id` |
+| `sort_order` | `sort_order` |
+| `domain` | `domain_en` |
+| `platform_or_company` | `platform_en` |
+| `product_or_resource` | `product_or_resource` |
+| `country_region` | `country_region` |
+| `access_types` | `resource_formats` |
+| `source_type` | `source_format` |
+| `official_or_evidence_url` | `source_url` |
+| `official_status` | `official_status_en` |
+| `review_status` | `verification_status` |
+| `cli_evidence` | `official_cli` |
+| `skill_evidence` | `official_skill` |
+| `mcp_evidence` | `official_mcp` |
+| `sdk_api_evidence` | `official_sdk_api` |
+| `openness_level` | `openness_level` |
+| `risk_level` | `risk_level` |
+| `notes` | `description_en` |
+| `source_batch` | `source_dataset` |
+| `checked_at` | `checked_at` |
+
 ## `data_sources`
 
 | Field | Description |
