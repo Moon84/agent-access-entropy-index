@@ -1,0 +1,27 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+*.log
+
+# Local caches and temporary files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+
+# Secrets and local credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+secrets/
+
+# Keep the transparent candidate queue public.
+!data/09-candidates/
+!data/09-candidates/*.jsonl
+!data/09-candidates/*.md

@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+"""Create rule-based review recommendations for discovered candidates."""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+import sys
+from datetime import date
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
+CANDIDATES_DIR = DATA / "09-candidates"
+
+
+OFFICIAL_OWNER_HINTS = [
+    "official",
+    "ncbi",
+    "nih",
+    "ebi",
+    "embl",
+    "ensembl",
+    "uniprot",
+    "rcsb",
+    "pubchem",
+    "chembl",
+    "clinicaltrials",
+    "fda",
+    "open-targets",
+    "cbioportal",
+    "galaxyproject",
+    "nextflow-io",
+    "snakemake",
+    "bioconductor",
+]
+
+COMMUNITY_HINTS = [
+    "awesome",
+    "example",
+    "demo",
+    "unofficial",
+    "community",
+    "wrapper",
+]
+
+EXCLUDED_TERMS = [
+    "phi",
+    "pii",
+    "patient record",
+    "medical records",
+    "hospital internal",
+    "ehr private",
+    "emr private",
+    "claims data",
+    "private biobank",
+]
+
+MACHINE_ACCESS_PATTERNS = [
+    r"\bapi\b",
+    r"\bsdk\b",
+    r"\bcli\b",
+    r"\bmcp\b",
+    r"skill\.md",
+    r"agent skill",
+    r"\bopenapi\b",
+    r"\bgraphql\b",
+    r"\brest\b",
+]
+
+
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                rows.append(json.loads(line))
+    return rows
+
+
+def load_known_urls() -> set[str]:
+    urls: set[str] = set()
+    for path in [
+        DATA / "01-access-resources.csv",
+        DATA / "02-platforms.csv",
+        DATA / "03-vendor-openness-matrix.csv",
+        DATA / "04-agent-skill-ecosystem.csv",
+    ]:
+        if not path.exists():
+            continue
+        with path.open(newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                for key in ("source_url", "official_source_url", "github_url"):
+                    url = (row.get(key) or "").strip().rstrip("/")
+                    if url and url not in {"待补", "todo", "tbd", "n/a", "na"}:
+                        urls.add(url)
+    return urls
+
+
+def review(candidate: dict[str, Any], known_urls: set[str]) -> dict[str, Any]:
+    url = str(candidate.get("url", "")).rstrip("/")
+    owner = str(candidate.get("platform_or_owner", "")).lower()
+    name = str(candidate.get("product_or_resource", "")).lower()
+    description = str(candidate.get("description", "")).lower()
+    topics = " ".join(candidate.get("topics") or []).lower()
+    text = " ".join([owner, name, description, topics])
+
+    reasons: list[str] = []
+    flags: list[str] = []
+    score = 0
+
+    if url in known_urls:
+        flags.append("already_indexed")
+        score -= 100
+
+    if any(term in text for term in EXCLUDED_TERMS):
+        flags.append("excluded_private_or_sensitive_data_boundary")
+        score -= 100
+
+    if any(hint in owner for hint in OFFICIAL_OWNER_HINTS):
+        reasons.append("owner_matches_known_official_or_institutional_hint")
+        score += 35
+
+    if any(re.search(pattern, text) for pattern in MACHINE_ACCESS_PATTERNS):
+        reasons.append("machine_access_terms_found")
+        score += 20
+
+    if int(candidate.get("stars") or 0) >= 100:
+        reasons.append("repository_has_significant_usage_signal")
+        score += 10
+
+    if re.search(r"\b(official|maintained by|product team)\b", text):
+        reasons.append("official_language_hint_found")
+        score += 15
+
+    if any(hint in text for hint in COMMUNITY_HINTS):
+        reasons.append("community_or_example_language_hint_found")
+        score -= 15
+
+    if "excluded_private_or_sensitive_data_boundary" in flags:
+        recommended_status = "Rejected - boundary"
+    elif "already_indexed" in flags:
+        recommended_status = "Duplicate"
+    elif score >= 55:
+        recommended_status = "Candidate - likely official"
+    elif score >= 25:
+        recommended_status = "Candidate - needs evidence"
+    else:
+        recommended_status = "Low priority"
+
+    return {
+        **candidate,
+        "reviewed_at": date.today().isoformat(),
+        "review_score": score,
+        "recommended_status": recommended_status,
+        "review_reasons": reasons,
+        "review_flags": flags,
+        "review_notes": "Rule-based pre-review only. Confirm official status with vendor GitHub org, official docs, official domain, or product-team README before database promotion.",
+    }
+
+
+def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def write_markdown(path: Path, rows: list[dict[str, Any]]) -> None:
+    selected = [row for row in rows if row["recommended_status"] not in {"Duplicate", "Rejected - boundary"}]
+    selected.sort(key=lambda row: int(row.get("review_score") or 0), reverse=True)
+    lines = [
+        "# Candidate Review Queue",
+        "",
+        "This file is generated by `scripts/review_candidates.py`. It is a review queue, not the primary database.",
+        "",
+        "| Status | Score | Entity | Domain | Resource | Hints | URL |",
+        "|---|---:|---|---|---|---|---|",
+    ]
+    for row in selected[:100]:
+        hints = ";".join(row.get("resource_type_hints") or [])
+        lines.append(
+            "| {status} | {score} | {entity} | {domain} | {resource} | {hints} | {url} |".format(
+                status=row.get("recommended_status", ""),
+                score=row.get("review_score", ""),
+                entity=row.get("entity_id", ""),
+                domain=row.get("domain_zh") or row.get("domain_en") or "",
+                resource=str(row.get("product_or_resource", "")).replace("|", "\\|"),
+                hints=hints.replace("|", "\\|"),
+                url=row.get("url", ""),
+            )
+        )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Review discovered candidates.")
+    parser.add_argument("input", nargs="?", default="")
+    parser.add_argument("--output", default="")
+    parser.add_argument("--markdown", default=str(CANDIDATES_DIR / "review-queue.md"))
+    args = parser.parse_args()
+
+    if args.input:
+        input_path = Path(args.input)
+    else:
+        files = sorted(CANDIDATES_DIR.glob("discovered-*.jsonl"))
+        if not files:
+            print("no discovered candidate files found", file=sys.stderr)
+            return 1
+        input_path = files[-1]
+
+    rows = read_jsonl(input_path)
+    known_urls = load_known_urls()
+    reviewed = [review(row, known_urls) for row in rows]
+
+    output = Path(args.output) if args.output else CANDIDATES_DIR / input_path.name.replace("discovered-", "reviewed-")
+    write_jsonl(output, reviewed)
+    write_markdown(Path(args.markdown), reviewed)
+    print(f"reviewed {len(reviewed)} candidates")
+    print(f"- {output.relative_to(ROOT)}")
+    print(f"- {Path(args.markdown).relative_to(ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

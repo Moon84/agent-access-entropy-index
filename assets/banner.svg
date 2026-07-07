@@ -1,0 +1,85 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Access Entropy Index</title>
+  <desc id="desc">A dark information-flow banner with connected nodes, entropy waves, and the project title.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.45" stop-color="#0d1b2a"/>
+      <stop offset="1" stop-color="#10251f"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="170" y1="112" x2="1118" y2="318" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#58a6ff"/>
+      <stop offset="0.5" stop-color="#35d399"/>
+      <stop offset="1" stop-color="#f4c430"/>
+    </linearGradient>
+    <radialGradient id="pulse" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(995 112) rotate(125) scale(366 296)">
+      <stop offset="0" stop-color="#35d399" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#35d399" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="420" rx="28" fill="url(#bg)"/>
+  <rect width="1280" height="420" rx="28" fill="url(#grid)"/>
+  <rect width="1280" height="420" rx="28" fill="url(#pulse)"/>
+
+  <g opacity="0.34">
+    <path d="M98 341C196 249 278 271 386 205C494 139 556 76 680 128C804 180 876 298 992 248C1108 198 1138 91 1210 72" stroke="#a5b4fc" stroke-width="1.4"/>
+    <path d="M82 265C196 195 268 230 378 167C488 104 578 64 698 178C818 292 885 344 1004 293C1123 242 1136 163 1218 132" stroke="#34d399" stroke-width="1.4"/>
+    <path d="M120 117C224 164 305 105 420 149C535 193 606 276 718 248C830 220 888 84 1012 105C1136 126 1160 253 1230 279" stroke="#f4c430" stroke-width="1.4"/>
+  </g>
+
+  <g stroke="url(#flow)" stroke-width="2.2" stroke-linecap="round" opacity="0.9">
+    <path d="M118 242C205 178 292 186 382 216C483 249 565 298 672 226C779 154 859 97 966 148C1045 185 1100 257 1185 231"/>
+    <path d="M158 316C282 238 370 314 492 252C614 190 673 98 806 150C939 202 1002 341 1142 286"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <circle cx="118" cy="242" r="8" fill="#58a6ff"/>
+    <circle cx="382" cy="216" r="8" fill="#58a6ff"/>
+    <circle cx="672" cy="226" r="9" fill="#35d399"/>
+    <circle cx="966" cy="148" r="8" fill="#35d399"/>
+    <circle cx="1185" cy="231" r="8" fill="#f4c430"/>
+    <circle cx="158" cy="316" r="6" fill="#58a6ff"/>
+    <circle cx="492" cy="252" r="7" fill="#35d399"/>
+    <circle cx="806" cy="150" r="7" fill="#35d399"/>
+    <circle cx="1142" cy="286" r="7" fill="#f4c430"/>
+  </g>
+
+  <g opacity="0.75" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="17" letter-spacing="0">
+    <text x="77" y="95" fill="#7dd3fc">CLI</text>
+    <text x="234" y="83" fill="#a7f3d0">MCP</text>
+    <text x="1030" y="96" fill="#fde68a">API</text>
+    <text x="1128" y="350" fill="#93c5fd">SDK</text>
+    <text x="596" y="356" fill="#86efac">SKILL</text>
+    <text x="83" y="375" fill="#64748b">01001 10110 11100</text>
+    <text x="944" y="376" fill="#64748b">H = -Σ p log p</text>
+  </g>
+
+  <g>
+    <text x="80" y="178" fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="54" font-weight="800" letter-spacing="0">
+      Agent Access Entropy Index
+    </text>
+    <text x="82" y="220" fill="#cbd5e1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" letter-spacing="0">
+      Measuring official-source machine-readable access paths for AI agents
+    </text>
+  </g>
+
+  <g transform="translate(82 262)">
+    <rect x="0" y="0" width="118" height="34" rx="17" fill="#132f4c" stroke="#58a6ff" stroke-opacity="0.45"/>
+    <rect x="134" y="0" width="124" height="34" rx="17" fill="#12352c" stroke="#35d399" stroke-opacity="0.45"/>
+    <rect x="274" y="0" width="126" height="34" rx="17" fill="#3a2d10" stroke="#f4c430" stroke-opacity="0.45"/>
+    <text x="21" y="23" fill="#bfdbfe" font-family="Inter, ui-sans-serif, system-ui" font-size="15" font-weight="700">CLI / API</text>
+    <text x="158" y="23" fill="#bbf7d0" font-family="Inter, ui-sans-serif, system-ui" font-size="15" font-weight="700">MCP / Skill</text>
+    <text x="296" y="23" fill="#fde68a" font-family="Inter, ui-sans-serif, system-ui" font-size="15" font-weight="700">Entropy</text>
+  </g>
+</svg>

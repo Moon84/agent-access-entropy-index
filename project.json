@@ -1,0 +1,9 @@
+{
+  "name": "agent-access-entropy-index",
+  "title": "Agent Access Entropy Index",
+  "description": "Community-maintained index measuring official-source CLI, Agent Skill, MCP, SDK, and API access paths for AI agents.",
+  "license": "MIT",
+  "status": "draft-local",
+  "last_checked_at": "2026-07-07",
+  "disclaimer": "Independent index. Not affiliated with, endorsed by, sponsored by, or officially approved by any listed vendor."
+}
