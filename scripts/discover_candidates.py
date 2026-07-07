@@ -333,7 +333,11 @@ def main() -> int:
 
     output = Path(args.output) if args.output else CANDIDATES_DIR / f"discovered-{run_id[:10]}.jsonl"
     write_jsonl(output, list(deduped.values()))
-    print(f"wrote {len(deduped)} candidates to {output.relative_to(ROOT)}")
+    try:
+        display_path = output.relative_to(ROOT)
+    except ValueError:
+        display_path = output
+    print(f"wrote {len(deduped)} candidates to {display_path}")
     return 0
 
 

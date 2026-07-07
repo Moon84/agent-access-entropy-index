@@ -72,6 +72,8 @@ python3 scripts/sync_tracking_status.py
 
 The tracking system writes candidates first, then uses rule-based review and double-check evidence before anything is promoted into `data_sources`.
 
+Current tracking source types include GitHub orgs/repos, official docs/homepages, RSS/Atom feeds, and public web pages. Entities without a usable public source are kept in the tracking table with `needs_source` status.
+
 ## Agent Access
 
 Run the local stdio MCP server:

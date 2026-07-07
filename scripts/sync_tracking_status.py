@@ -58,7 +58,7 @@ def latest_by_entity(rows: list[dict[str, Any]], field: str) -> dict[str, str]:
     return latest
 
 
-def main() -> int:
+def sync_tracking_status(export: bool = True) -> int:
     indexed = known_urls()
     discovered = read_jsonl(latest_candidate_file("discovered"))
     reviewed = read_jsonl(latest_candidate_file("reviewed"))
@@ -118,8 +118,14 @@ def main() -> int:
     finally:
         conn.close()
 
-    rebuild_index.export_all()
     print(f"synced {len(updates)} tracked entities")
+    if export:
+        rebuild_index.export_all()
+    return len(updates)
+
+
+def main() -> int:
+    sync_tracking_status(export=True)
     return 0
 
 

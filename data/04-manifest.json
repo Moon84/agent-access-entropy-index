@@ -22,8 +22,8 @@
   },
   "files": {
     "data/01-index.sqlite": {
-      "bytes": 196608,
-      "sha256": "843a74a2aa70bc22e3497f63e2d08418e58ddee7e7095349d05a07d0bec5718a"
+      "bytes": 270336,
+      "sha256": "0690f29373ef1dde14254e2e97129e9b1362080bca773e26f2f3115f08b78178"
     },
     "data/01-data-sources.zh-CN.csv": {
       "bytes": 51208,
@@ -35,11 +35,11 @@
     },
     "data/02-tracked-entities.zh-CN.csv": {
       "bytes": 29172,
-      "sha256": "d941b1d720dc572868da6dc5ea10fb3e10dbd31e129c4b6e66ceece7323b871d"
+      "sha256": "48399b16a202a03cf4551796f701747c18f656e2ac0a90d8762b812e3ed03e8c"
     },
     "data/02-tracked-entities.en.csv": {
       "bytes": 39076,
-      "sha256": "bc2756b0d520e784bd988f44c22ee001ade1136b59d58298f96bbb00d2433b60"
+      "sha256": "9df9da621d7d947929600b1e07f9480f5e004e1f469baa26b43df6796fd25542"
     },
     "data/03-schema.csv": {
       "bytes": 6151,

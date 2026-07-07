@@ -48,6 +48,20 @@ Typical watch-source fields:
 
 Only matching items become candidates. Non-matching updates stay out of the review queue.
 
+## Source Types
+
+The current discovery script supports:
+
+| Source type | What it checks |
+|---|---|
+| `github_org` | Recent repositories under an official GitHub organization. |
+| `github_user` | Recent repositories under an official GitHub user account. |
+| `github_repo` | One official repository, including description, topics, homepage, and update metadata. |
+| `rss` / `atom` | Feed entries from official release, changelog, blog, or docs feeds. |
+| `web_page` | One official public page, such as API docs, release pages, or developer documentation. |
+
+`scripts/sync_entities_from_sources.py` auto-generates watch sources from each tracked entity's `primary_github`, `primary_docs`, and `official_homepage`. Entities without a usable public URL remain in the table with `needs_source` status so they can be completed later.
+
 ## Review
 
 Run the local pipeline:

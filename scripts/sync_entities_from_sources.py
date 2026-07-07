@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sqlite3
+import urllib.parse
 from collections import Counter, defaultdict
 from datetime import date
 from typing import Any
@@ -15,6 +16,8 @@ from index_store import DB_PATH, normalize_url
 
 
 TRACKED_COLUMNS = rebuild_index.TRACKED_ENTITY_FIELDS
+DEFAULT_KEYWORDS = "cli;mcp;sdk;api;rest;graphql;openapi;skill;SKILL.md;plugin;download;dataset;webhook"
+EXCLUDE_TERMS = "PHI;PII;patient record;medical records;hospital internal;private dataset;internal only"
 
 TYPE_BY_DOMAIN = [
     ("life science", "Public data source"),
@@ -94,6 +97,104 @@ def split_github(url: str) -> str:
     if len(parts) == 1:
         return f"https://github.com/{parts[0]}"
     return f"https://github.com/{parts[0]}/{parts[1]}"
+
+
+def valid_url(url: str) -> bool:
+    text = normalize_url(url)
+    if not text or text.lower() in {"待补", "todo", "tbd", "n/a", "na"}:
+        return False
+    if rebuild_index.has_han(text):
+        return False
+    parsed = urllib.parse.urlparse(text)
+    if parsed.netloc == "github.com" and parsed.path.strip("/") == "":
+        return False
+    return text.startswith("https://") or text.startswith("http://")
+
+
+def source_type_for_url(url: str) -> str:
+    normalized = normalize_url(url)
+    parsed = urllib.parse.urlparse(normalized)
+    if parsed.netloc != "github.com":
+        return "web_page"
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) <= 1:
+        return "github_org"
+    return "github_repo"
+
+
+def watch_id(entity_id: str, source_type: str, label: str) -> str:
+    return f"{entity_id}-{source_type}-{slug(label)}"[:120]
+
+
+def watch_keywords(domain_en: str) -> str:
+    lower = domain_en.lower()
+    extras: list[str] = []
+    if "bio" in lower or "life science" in lower:
+        extras.extend(["workflow", "blast", "omics"])
+    if "financial" in lower:
+        extras.extend(["market data", "trading", "terminal"])
+    if "crypto" in lower:
+        extras.extend(["wallet", "trade", "trading", "mcp"])
+    if "office" in lower or "document" in lower:
+        extras.extend(["docs", "workspace", "spreadsheet"])
+    if "cloud" in lower:
+        extras.extend(["cloud", "deploy", "serverless"])
+    terms = DEFAULT_KEYWORDS.split(";") + extras
+    return ";".join(dict.fromkeys(term for term in terms if term))
+
+
+def generated_watch_sources(entity: dict[str, str]) -> list[dict[str, str]]:
+    sources: list[tuple[str, str, str]] = [
+        ("primary_github", entity.get("primary_github", ""), "GitHub"),
+        ("primary_docs", entity.get("primary_docs", ""), "Docs"),
+        ("official_homepage", entity.get("official_homepage", ""), "Homepage"),
+    ]
+    watches: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for source_key, raw_url, label in sources:
+        url = normalize_url(raw_url)
+        if not valid_url(url) or url in seen:
+            continue
+        seen.add(url)
+        source_type = source_type_for_url(url)
+        target = f"{entity.get('entity_name_en') or entity.get('entity_name_zh')} {label}".strip()
+        watches.append(
+            {
+                "watch_id": watch_id(str(entity["entity_id"]), source_type, label),
+                "entity_id": str(entity["entity_id"]),
+                "domain_zh": str(entity.get("domain_zh", "")),
+                "domain_en": str(entity.get("domain_en", "")),
+                "target_name": target,
+                "source_type": source_type,
+                "source_url": url,
+                "official_homepage": normalize_url(str(entity.get("official_homepage", ""))) if valid_url(str(entity.get("official_homepage", ""))) else "",
+                "keywords": watch_keywords(str(entity.get("domain_en", ""))),
+                "exclude_terms": EXCLUDE_TERMS,
+                "notes": f"Auto-generated from tracked_entities.{source_key}",
+                "checked_at": str(entity.get("checked_at", "")),
+            }
+        )
+    return watches
+
+
+def merge_watch_sources(existing_json: str, generated: list[dict[str, str]]) -> str:
+    try:
+        existing = json.loads(existing_json or "[]")
+    except json.JSONDecodeError:
+        existing = []
+    by_url: dict[str, dict[str, str]] = {}
+    for item in existing + generated:
+        if not isinstance(item, dict):
+            continue
+        url = normalize_url(str(item.get("source_url", "")))
+        if not valid_url(url):
+            continue
+        normalized = {key: str(value or "") for key, value in item.items()}
+        merged = {**normalized, **by_url.get(url, {})} if url in by_url else normalized
+        merged["source_url"] = url
+        merged["source_type"] = source_type_for_url(url)
+        by_url[url] = merged
+    return json.dumps(list(by_url.values()), ensure_ascii=False, sort_keys=True)
 
 
 def first_url(rows: list[dict[str, Any]], predicate) -> str:
@@ -255,7 +356,9 @@ def merge_entity(existing: dict[str, Any] | None, name: str, rows: list[dict[str
     entity["tracking_status"] = entity["tracking_status"] or "needs_review"
     entity["index_status"] = "indexed"
     entity["checked_at"] = today
-    entity["watch_sources_json"] = entity["watch_sources_json"] or "[]"
+    entity["watch_sources_json"] = merge_watch_sources(entity["watch_sources_json"] or "[]", generated_watch_sources(entity))
+    if entity["watch_sources_json"] == "[]":
+        entity["tracking_status"] = "needs_source"
     return entity
 
 
@@ -269,7 +372,7 @@ def replace_entities(conn: sqlite3.Connection, entities: list[dict[str, Any]]) -
     )
 
 
-def main() -> int:
+def sync_entities(export: bool = True) -> int:
     today = date.today().isoformat()
     conn = sqlite3.connect(DB_PATH)
     try:
@@ -301,8 +404,14 @@ def main() -> int:
     finally:
         conn.close()
 
-    rebuild_index.export_all()
     print(f"synced {len(merged)} tracked entities from data_sources")
+    if export:
+        rebuild_index.export_all()
+    return len(merged)
+
+
+def main() -> int:
+    sync_entities(export=True)
     return 0
 
 

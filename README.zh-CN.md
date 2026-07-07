@@ -72,6 +72,8 @@ python3 scripts/sync_tracking_status.py
 
 系统会先生成候选，再按规则预审和 double check；确认官方来源、公开边界和机器可访问性之后，才进入 `data_sources`。
 
+当前追踪源类型包括 GitHub 组织/仓库、官方文档/官网、RSS/Atom feed 和公开网页。没有可用公开来源的对象会保留在追踪表中，并标记为 `needs_source`。
+
 ## Agent 访问
 
 运行本地 stdio MCP server：
