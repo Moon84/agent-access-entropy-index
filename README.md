@@ -18,7 +18,7 @@ Information entropy is the first principle of the AI era.
 | Metric | Count |
 |---|---:|
 | Access resources | 202 |
-| Platforms / software | 133 |
+| Platforms / software | 147 |
 | Industries / domains | 45 |
 
 Primary data: `data/01-index.sqlite`. Version: `0.1.0`.

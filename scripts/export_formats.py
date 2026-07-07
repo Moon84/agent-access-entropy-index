@@ -3,12 +3,12 @@
 
 from __future__ import annotations
 
-import rebuild_index
+import sync_entities_from_sources
 
 
 def main() -> None:
-    rebuild_index.export_all()
-    print("exported readable CSV files and refreshed README statistics")
+    sync_entities_from_sources.main()
+    print("synced tracked entities, exported readable CSV files, and refreshed README statistics")
 
 
 if __name__ == "__main__":

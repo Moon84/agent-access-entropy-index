@@ -104,6 +104,7 @@ English export order:
 | `entity_id` | Stable tracked entity identifier. |
 | `entity_name_en` / `entity_name_zh` | Company, platform, public data source, or software name. |
 | `entity_type` | Entity type, such as public data source, professional software, company, or software platform. |
+| `service_description_en` / `service_description_zh` | Short description of the service, product, software, or data resource. It can come from official/GitHub-style descriptions or be generated from indexed access-resource context. |
 | `domain_en` / `domain_zh` | Domain for tracking and candidate classification. |
 | `official_homepage` / `primary_github` / `primary_docs` | Official sources used for tracking and double-checking. |
 | `commercial_model` | Free, paid, mixed, open-source, subscription, institution-license, or other access model. |

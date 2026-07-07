@@ -17,33 +17,33 @@
   ],
   "counts": {
     "data_sources": 202,
-    "tracked_entities": 10,
-    "schema_fields": 52
+    "tracked_entities": 132,
+    "schema_fields": 54
   },
   "files": {
     "data/01-index.sqlite": {
-      "bytes": 139264,
-      "sha256": "17cb76158fa100a84fcefc8cf52fedccb1ba7bf25dccdcc5219fd1d4286a4c3e"
+      "bytes": 196608,
+      "sha256": "843a74a2aa70bc22e3497f63e2d08418e58ddee7e7095349d05a07d0bec5718a"
     },
     "data/01-data-sources.zh-CN.csv": {
       "bytes": 51208,
       "sha256": "71aa21828aa47e793c8fc978e72884a891dfff3e4ab47102f6da89fa4b44ffb5"
     },
     "data/01-data-sources.en.csv": {
-      "bytes": 47750,
-      "sha256": "fa55ebb1a438c34887e10e8b6d336f775ec40c428e1a730d98c24a95ed923d31"
+      "bytes": 47766,
+      "sha256": "b4ac0ba53dc91b95e0295a4715df84ef9549750325a5fe9ae76e2ef4f6041fd4"
     },
     "data/02-tracked-entities.zh-CN.csv": {
-      "bytes": 2938,
-      "sha256": "662ff7ee57e4223134fc2f4b5477d2d16cd8837399e917d0628117abb7b56a24"
+      "bytes": 29172,
+      "sha256": "d941b1d720dc572868da6dc5ea10fb3e10dbd31e129c4b6e66ceece7323b871d"
     },
     "data/02-tracked-entities.en.csv": {
-      "bytes": 3009,
-      "sha256": "e4211ca3ea4aa612d08f7d32ca50054ded85748f51871d7a3f297d0c24acc902"
+      "bytes": 39076,
+      "sha256": "bc2756b0d520e784bd988f44c22ee001ade1136b59d58298f96bbb00d2433b60"
     },
     "data/03-schema.csv": {
-      "bytes": 5863,
-      "sha256": "180e6935404b55ba5c1bf9d5ed2bc3ed1198225a0c0e23848c67c5755fb3dcea"
+      "bytes": 6151,
+      "sha256": "9a9cf973c39b93bb874a910c590bb0a04b13b1b7cbb926ac0ee2ee8d00da667e"
     }
   },
   "sync_rule": "Use data/01-index.sqlite as the primary store. Regenerate readable CSV exports and README statistics with scripts/export_formats.py."

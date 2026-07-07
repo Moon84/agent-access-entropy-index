@@ -54,6 +54,8 @@ TRACKED_ENTITY_FIELDS = [
     "entity_name_en",
     "entity_name_zh",
     "entity_type",
+    "service_description_en",
+    "service_description_zh",
     "domain_zh",
     "domain_en",
     "country_region",
@@ -116,6 +118,8 @@ SCHEMA_DESCRIPTIONS = {
         "entity_name_en": ("English entity, company, platform, or public data source name.", "追踪对象、公司、平台或公共数据源英文名。"),
         "entity_name_zh": ("Chinese entity name when available.", "追踪对象中文名。"),
         "entity_type": ("Entity type such as public data source, software platform, company, or professional software.", "对象类型，例如公共数据源、软件平台、公司或专业软件。"),
+        "service_description_en": ("Short English description of the service or product.", "服务或产品的英文简要描述。"),
+        "service_description_zh": ("Short Chinese description of the service or product.", "服务或产品的中文简要描述。"),
         "domain_zh": ("Chinese domain for tracking.", "追踪对象中文领域。"),
         "domain_en": ("English domain for tracking.", "追踪对象英文领域。"),
         "country_region": ("Country or region when known.", "已知国家或地区。"),
@@ -197,6 +201,7 @@ ZH_ENTITY_FIELDS = {
     "entity_name_zh": "对象",
     "entity_name_en": "英文名",
     "entity_type": "类型",
+    "service_description_zh": "服务简介",
     "domain_zh": "领域",
     "country_region": "国家地区",
     "official_homepage": "官网",
@@ -216,8 +221,8 @@ ZH_ENTITY_FIELDS = {
 EN_ENTITY_FIELDS = {
     "entity_id": "entity_id",
     "entity_name_en": "entity",
-    "entity_name_zh": "chinese_name",
     "entity_type": "entity_type",
+    "service_description_en": "service_description",
     "domain_en": "domain",
     "country_region": "country_region",
     "official_homepage": "homepage",
@@ -345,13 +350,18 @@ NAME_EN = {
     "语雀 / Yuque": "Yuque",
     "Binance / 币安": "Binance",
     "阿里云百炼 Model Studio": "Alibaba Cloud Model Studio",
+    "阿里云百炼": "Alibaba Cloud Bailian",
     "来也 ADP": "Laiye ADP",
     "Choice 金融终端": "Choice financial terminal",
     "小红书": "Xiaohongshu",
     "微信公众号": "WeChat Official Accounts",
+    "微信生态社区": "WeChat ecosystem community",
     "小红书社区": "Xiaohongshu community",
     "139 个小红书运营技能": "139 Xiaohongshu operations skills",
     "iFinD MCP 平台": "iFinD MCP platform",
+    "飞书云文档": "Lark Cloud Docs",
+    "钉钉文档": "DingTalk Docs",
+    "Zotero 社区": "Zotero Community",
 }
 
 
@@ -400,6 +410,8 @@ def english_export_row(row: dict[str, Any], mapping: dict[str, str]) -> dict[str
             value = english_name(value, row.get("product_or_resource") or row.get("platform_en", ""))
         elif field == "source_url" and has_han(value):
             value = ""
+        elif field in {"official_homepage", "primary_github", "primary_docs"} and has_han(value):
+            value = ""
         elif field in {
             "official_cli",
             "official_skill",
@@ -409,6 +421,7 @@ def english_export_row(row: dict[str, Any], mapping: dict[str, str]) -> dict[str
             "verification_status",
             "openness_level",
             "description_en",
+            "service_description_en",
             "notes",
         }:
             value = english_text(value)

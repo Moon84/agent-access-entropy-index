@@ -1,11 +1,133 @@
-对象ID,对象,英文名,类型,领域,国家地区,官网,GitHub,文档,商业模式,追踪状态,入库状态,追踪源数,候选数,最近发现,最近审查,说明,检查日期
-ent-github,,GitHub,Software platform,Agent 工具平台,US,https://github.com,https://github.com/github,https://docs.github.com,Commercial and free tiers,active,indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Official GitHub MCP repository baseline tracking,2026-07-07
-ent-galaxy,,Galaxy Project,Professional software,生物信息学软件,Global,https://galaxyproject.org,https://github.com/galaxyproject,https://docs.galaxyproject.org,Open source,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Public bioinformatics platform and tooling,2026-07-07
-ent-nextflow,,Nextflow,Professional software,生物信息学软件,Global,https://www.nextflow.io,https://github.com/nextflow-io,https://www.nextflow.io/docs/latest,Open source and commercial ecosystem,active,not_indexed,1,0,,,Public workflow software platform,2026-07-07
-ent-snakemake,,Snakemake,Professional software,生物信息学软件,Global,https://snakemake.github.io,https://github.com/snakemake,https://snakemake.readthedocs.io,Open source,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Public workflow software platform,2026-07-07
-ent-clinicaltrials,,ClinicalTrials.gov,Public data source,临床试验与监管公开数据,US,https://clinicaltrials.gov,,https://clinicaltrials.gov/data-api/api,Free public resources,active,not_indexed,1,0,,,Official public clinical-trial data API,2026-07-07
-ent-openfda,,openFDA,Public data source,临床试验与监管公开数据,US,https://open.fda.gov,https://github.com/FDA,https://open.fda.gov/apis,Free public resources,active,not_indexed,1,0,,,Official FDA public data APIs and examples,2026-07-07
-ent-ensembl,,Ensembl,Public data source,生命科学公共数据源,UK/Global,https://www.ensembl.org,https://github.com/Ensembl,https://rest.ensembl.org,Free public resources,active,not_indexed,1,0,,,Official Ensembl public genomics tooling,2026-07-07
-ent-ncbi,,NCBI,Public data source,生命科学公共数据源,US,https://www.ncbi.nlm.nih.gov,https://github.com/ncbi,https://www.ncbi.nlm.nih.gov/datasets/docs/v2,Free public and API-key resources,active,not_indexed,1,0,,,Official public life-science data and software organization,2026-07-07
-ent-rcsb-pdb,,RCSB PDB,Public data source,生命科学公共数据源,US,https://www.rcsb.org,https://github.com/rcsb,https://www.rcsb.org/docs/programmatic-access/web-apis-overview,Free public resources,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Official RCSB PDB public structure-data tooling,2026-07-07
-ent-uniprot,,UniProt,Public data source,生命科学公共数据源,Global,https://www.uniprot.org,https://github.com/ebi-uniprot,https://www.uniprot.org/help/programmatic_access,Free public resources,active,not_indexed,1,0,,,Official UniProt public data and tooling,2026-07-07
+对象ID,对象,英文名,类型,服务简介,领域,国家地区,官网,GitHub,文档,商业模式,追踪状态,入库状态,追踪源数,候选数,最近发现,最近审查,说明,检查日期
+ent-anthropic,Anthropic,Anthropic,Software platform,Claude 官方 Skills 生态,AI / Agent,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-google-gemini,Google Gemini,Google Gemini,Software platform,Gemini API 和 Vertex AI 开发技能,AI / Agent,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-openai,OpenAI,OpenAI,Software platform,Codex GitHub PR CLI 工作流丰富,AI / Agent,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-alibaba-cloud-bailian,阿里云百炼,Alibaba Cloud Bailian,Software platform,Agent-first CLI,AI与模型平台,China,,https://github.com/modelstudioai/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-hugging-face,Hugging Face,Hugging Face,Software platform,hf-cli Hub Dataset Training Evaluation,AI / 模型平台,US/France,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-minimax,MiniMax,MiniMax,Software platform,MiniMax AI CLI 与 API,AI与模型平台,China,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-github,GitHub,GitHub,Software platform,官方 CLI Skill MCP 均确认,Agent 工具平台,US,https://github.com,https://github.com/github,https://docs.github.com,Commercial and free tiers,active,indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Official GitHub MCP repository baseline tracking,2026-07-07
+ent-galaxy,,Galaxy Project,Professional software,Public bioinformatics platform and tooling,生物信息学软件,Global,https://galaxyproject.org,https://github.com/galaxyproject,https://docs.galaxyproject.org,Open source,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Public bioinformatics platform and tooling,2026-07-07
+ent-nextflow,,Nextflow,Professional software,Public workflow software platform,生物信息学软件,Global,https://www.nextflow.io,https://github.com/nextflow-io,https://www.nextflow.io/docs/latest,Open source and commercial ecosystem,active,not_indexed,1,0,,,Public workflow software platform,2026-07-07
+ent-snakemake,,Snakemake,Professional software,Public workflow software platform,生物信息学软件,Global,https://snakemake.github.io,https://github.com/snakemake,https://snakemake.readthedocs.io,Open source,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Public workflow software platform,2026-07-07
+ent-brave,Brave,Brave,Software platform,bx CLI 搜索与浏览器能力,浏览器与搜索,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wordpress,WordPress,WordPress,Software platform,WP-CLI 站点运维内容管理,CMS,US/Global,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-clinicaltrials,,ClinicalTrials.gov,Public data source,Official public clinical-trial data API,临床试验与监管公开数据,US,https://clinicaltrials.gov,,https://clinicaltrials.gov/data-api/api,Free public resources,active,not_indexed,1,0,,,Official public clinical-trial data API,2026-07-07
+ent-openfda,,openFDA,Public data source,Official FDA public data APIs and examples,临床试验与监管公开数据,US,https://open.fda.gov,https://github.com/FDA,https://open.fda.gov/apis,Free public resources,active,not_indexed,1,0,,,Official FDA public data APIs and examples,2026-07-07
+ent-alibaba-cloud,Alibaba Cloud,Alibaba Cloud,Software platform,基于 Alibaba Cloud OpenAPI,公有云与云原生,China,,https://github.com/aliyun/aliyun-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-firebase,Firebase,Firebase,Software platform,Firebase CLI,公有云与云原生,US,,https://github.com/firebase/firebase-tools,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-hashicorp,HashiCorp,HashiCorp,Software platform,IaC 事实标准,公有云与云原生,US,,https://github.com/hashicorp/terraform,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-huawei-cloud,Huawei Cloud,Huawei Cloud,Software platform,官方 Agent Skills,公有云与云原生,China,,https://github.com/huaweicloud/huaweicloud-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-neon,Neon,Neon,Software platform,Serverless Postgres CLI,公有云与云原生,US,,https://github.com/neondatabase/neonctl,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-tencent-cloud,Tencent Cloud,Tencent Cloud,Software platform,Tencent Cloud API 3.0 CLI,公有云与云原生,China,,https://github.com/TencentCloud/tencentcloud-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-volcengine,Volcengine,Volcengine,Software platform,调用和管理火山引擎 OpenAPI,公有云与云原生,China,,https://github.com/volcengine/volcengine-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-aws,AWS,AWS,Software platform,官方 CLI 明确,云数据AI,US,,https://github.com/aws/aws-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-alibaba-cloud-model-studio,阿里云百炼 Model Studio,Alibaba Cloud Model Studio,Software platform,Agent-first CLI,云数据AI,,,https://github.com/modelstudioai/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-azure,Azure,Azure,Software platform,官方 CLI + Skills/MCP 生态,云数据AI,US,,https://github.com/Azure/azure-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-cloudflare,Cloudflare,Cloudflare,Software platform,Workers SDK + Wrangler,云数据AI,US,,https://github.com/cloudflare/workers-sdk,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-duckdb,DuckDB,DuckDB,Software platform,官方 CLI + Skills 收录,云数据AI,Netherlands/Global,,https://github.com/duckdb/duckdb,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-laiye-adp,来也 ADP,Laiye ADP,Software platform,文档解析分类抽取校验,云数据AI,China,,https://github.com/laiye-ai/adp-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-mongodb,MongoDB,MongoDB,Software platform,官方 CLI + Skills 收录,云数据AI,US,,https://github.com/mongodb-js/mongosh,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-netlify,Netlify,Netlify,Software platform,Netlify CLI + Skills,云数据AI,US,,https://github.com/netlify/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-pinecone,Pinecone,Pinecone,Software platform,官方 Agent Skills library,云数据AI,US,,https://github.com/pinecone-io/skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-supabase,Supabase,Supabase,Software platform,CLI 明确 MCP 需继续查,云数据AI,US,,https://github.com/supabase/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-vercel,Vercel,Vercel,Software platform,Vercel CLI + skills,云数据AI,US,,https://github.com/vercel/vercel,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bnb-chain,BNB Chain,BNB Chain,Software platform,官方 BNB Chain Skills 指导 Agent 使用 BNB Chain MCP,数字货币交易,Global,,https://github.com/bnb-chain/bnbchain-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-base,Base,Base,Software platform,Base/Coinbase 链上 Agent 生态,数字货币交易,US,,https://github.com/base/base-mcp-legacy,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-binance,币安,Binance,Software platform,官方 Skills Hub 面向 crypto 原生 Agent 能力,数字货币交易,Global/China,,https://github.com/binance/binance-skills-hub,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bitmex,BitMEX,BitMEX,Software platform,API/交易接口成熟；Agent Skill/MCP 待查,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bitget,Bitget,Bitget,Software platform,官方 API 存在；Agent Skill/MCP 待查,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bybit,Bybit,Bybit,Software platform,常见第三方 SDK/API；官方 Agent 入口未确认,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-coingecko,CoinGecko,CoinGecko,Software platform,价格/市场数据平台；MCP/Skill 需确认官方源,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-coinmarketcap,CoinMarketCap,CoinMarketCap,Software platform,官方 CoinMarketCap AI Agent Skills,数字货币交易,US/API,,https://github.com/coinmarketcap-official/skills-for-ai-agents-by-CoinMarketCap,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-coinbase,Coinbase,Coinbase,Software platform,官方 Agentic Wallet Skills AgentKit Payments MCP,数字货币交易,US,,https://github.com/coinbase/agentic-wallet-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-coinbase-agentkit,Coinbase AgentKit,Coinbase AgentKit,Software platform,AI agents 钱包和链上交互工具包,数字货币交易,US,,https://github.com/coinbase/agentkit,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-coinbase-payments-mcp,Coinbase Payments MCP,Coinbase Payments MCP,Software platform,钱包 onramp x402 支付 MCP,数字货币交易,US,,https://github.com/coinbase/payments-mcp,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-crypto-com,Crypto.com,Crypto.com,Software platform,交易平台 API 存在；Agent Skill/MCP 待查,数字货币交易,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-debank,DeBank,DeBank,Software platform,链上资产/钱包数据平台；官方 Agent 入口未确认,数字货币交易,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-defillama,DefiLlama,DefiLlama,Software platform,DeFi 数据 API 开放；Agent 入口多为社区,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-deribit,Deribit,Deribit,Software platform,期权/衍生品 API 成熟；Agent Skill/MCP 待查,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-gate-io,Gate.io,Gate.io,Software platform,官方 API 存在；Agent Skill/MCP 待查,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-kraken,Kraken,Kraken,Software platform,官方 AI-native CLI 支持 crypto stocks forex derivatives,数字货币交易,US,,https://github.com/krakenfx/kraken-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-kucoin,KuCoin,KuCoin,Software platform,官方 API 存在；Agent Skill/MCP 待查,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-moonpay,MoonPay,MoonPay,Software platform,法币出入金平台需确认官方 Agent 入口,数字货币交易,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-nethermind,Nethermind,Nethermind,Software platform,区块链基础设施/客户端,数字货币交易,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-okx,OKX,OKX,Software platform,官方 Skill + MCP trading kit,数字货币交易,Global,,https://github.com/okx/agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-okx-agent-trade-kit,OKX Agent Trade Kit,OKX Agent Trade Kit,Software platform,OKX trading MCP server,数字货币交易,Global,,https://github.com/okx/agent-trade-kit,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-uniswap,Uniswap,Uniswap,Software platform,官方 SDK/API 成熟但 Skill/MCP 官方源需继续确认,数字货币交易,Global,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-databricks,Databricks,Databricks,Software platform,Lakehouse CLI,数据平台与数据库,US,,https://github.com/databricks/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-snowflake,Snowflake,Snowflake,Software platform,开发者工作流和 SQL 操作,数据平台与数据库,US,,https://github.com/snowflakedb/snowflake-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-dbt-labs,dbt Labs,dbt Labs,Software platform,数据转换事实标准,数据平台与数据库,US,,https://github.com/dbt-labs/dbt-core,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-ipinfo,IPinfo,IPinfo,Software platform,IP 地理位置和网络数据 CLI,数据供应商,US,,https://github.com/ipinfo/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-kaggle,Kaggle,Kaggle,Software platform,官方 Kaggle CLI,数据供应商,US,,https://github.com/Kaggle/kaggle-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-massive,Massive / Polygon.io,Massive,Software platform,金融市场 API Python client,数据供应商,US,,https://github.com/massive-com/client-python,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-x-api,X API,X API,Software platform,X API CLI 生态,数据供应商,US,,https://github.com/xdevplatform/xurl,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-redis,Redis,Redis,Software platform,Redis 操作与开发,数据库,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-clickhouse,ClickHouse,ClickHouse,Software platform,ClickHouse 查询与数据分析,数据库与分析,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-angular,Angular,Angular,Software platform,Angular 官方 Skills,设计前端移动,US,,https://github.com/angular/skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-expo,Expo,Expo,Software platform,Expo/EAS 工作流,设计前端移动,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-figma,Figma,Figma,Software platform,设计数据和工作流,设计前端移动,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-azure-devops,Azure DevOps,Azure DevOps,Software platform,Azure DevOps 专属 Skill 需细查,开发者平台,,,https://github.com/microsoft/azure-devops-cli-extension,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-gitlab,GitLab,GitLab,Software platform,Skill/MCP 待查,开发者平台,US,https://gitlab.com/gitlab-org/cli,https://github.com/profclems/glab,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wps-365,金山文档,WPS 365,Software platform,通过本地 CLI 操作 WPS 365 AirPage 智能文档,文档与办公,China,,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-microsoft,Microsoft,Microsoft,Software platform,覆盖多语言和开发栈,企业软件与开发平台,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wind,万得,Wind,Data provider,官方 wind-skills,金融数据,China,,https://github.com/Wind-Information-Co-Ltd/wind-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-ifind,同花顺 iFinD,iFinD,Data provider,官方 MCP 平台已确认,金融数据,China,https://mcp.51ifind.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-akshare,AKShare,AKShare,Data provider,开源财经数据接口库覆盖 A 股港美股宏观等,金融数据与终端,China,,https://github.com/akfamily/akshare,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-alpaca,Alpaca,Alpaca,Data provider,交易与行情 API 开放度高但需风控,金融数据与终端,US,,https://github.com/alpacahq/alpaca-py,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-baostock,Baostock,Baostock,Data provider,免费证券数据接口,金融数据与终端,China,,https://github.com/baostock/baostock,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bloomberg,Bloomberg,Bloomberg,Data provider,依赖 Bloomberg 授权的 Python API 包,金融数据与终端,US/Global,,https://github.com/msitt/blpapi-python,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-eastmoney-choice,东方财富 Choice,Eastmoney Choice,Data provider,终端和量化接口生态存在但未发现官方 Agent Skill/MCP 公开入口,金融数据与终端,China,https://choice.eastmoney.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-factset,FactSet,FactSet,Data provider,官方 GitHub 组织提供多语言 SDK,金融数据与终端,US,,https://github.com/factset,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-interactive-brokers,Interactive Brokers,Interactive Brokers,Data provider,交易与行情 API 成熟但依赖账户和网关,金融数据与终端,US/Global,,https://github.com/InteractiveBrokers/tws-api-public,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-joinquant,聚宽 JoinQuant,JoinQuant,Data provider,量化研究和回测平台数据接口多在平台内使用,金融数据与终端,China,https://www.joinquant.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-lseg,LSEG / Refinitiv,LSEG,Data provider,Workspace/Data Library API 样例丰富,金融数据与终端,UK/Global,,https://github.com/LSEG-API-Samples/Example.DataLibrary.Python,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-morningstar,Morningstar,Morningstar,Data provider,数据和 Direct 生态偏商业授权,金融数据与终端,US,https://developer.morningstar.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-nasdaq-data-link,Nasdaq Data Link,Nasdaq Data Link,Data provider,原 Quandl 数据平台 Python SDK,金融数据与终端,US,,https://github.com/Nasdaq/data-link-python,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-polygon-io,Polygon.io / Massive,Polygon.io,Data provider,市场数据 REST/WebSocket API,金融数据与终端,US,,https://github.com/massive-com/client-python,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-ricequant,米筐 Ricequant,Ricequant,Data provider,量化投研平台 API/数据绑定平台环境,金融数据与终端,China,https://www.ricequant.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-s-p-global-market-intelligence,S&P Global Market Intelligence,S&P Global Market Intelligence,Data provider,企业订阅型数据接口,金融数据与终端,US,https://developer.spglobal.com,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-tushare-pro,Tushare Pro,Tushare Pro,Data provider,A 股数据接口社区影响力强,金融数据与终端,China,,https://github.com/waditu/tushare,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-apollo-graphql,Apollo GraphQL,Apollo GraphQL,Software platform,Rover CLI Schema 管理 GraphOS,GraphQL 平台,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-nvidia,NVIDIA,NVIDIA,Software platform,CUDA-Q DALI NeMo TensorRT-LLM cuOpt Nsight,硬件半导体与 HPC,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-yuque,语雀,Yuque,Software platform,官方 MCP + Skills + Plugin,知识库与团队文档,China,,https://github.com/yuque/yuque-ecosystem,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-ensembl,,Ensembl,Public data source,Official Ensembl public genomics tooling,生命科学公共数据源,UK/Global,https://www.ensembl.org,https://github.com/Ensembl,https://rest.ensembl.org,Free public resources,active,not_indexed,1,0,,,Official Ensembl public genomics tooling,2026-07-07
+ent-ncbi,,NCBI,Public data source,Official public life-science data and software organization,生命科学公共数据源,US,https://www.ncbi.nlm.nih.gov,https://github.com/ncbi,https://www.ncbi.nlm.nih.gov/datasets/docs/v2,Free public and API-key resources,active,not_indexed,1,0,,,Official public life-science data and software organization,2026-07-07
+ent-rcsb-pdb,,RCSB PDB,Public data source,Official RCSB PDB public structure-data tooling,生命科学公共数据源,US,https://www.rcsb.org,https://github.com/rcsb,https://www.rcsb.org/docs/programmatic-access/web-apis-overview,Free public resources,active,not_indexed,1,1,2026-07-07T09:04:32Z,2026-07-07,Official RCSB PDB public structure-data tooling,2026-07-07
+ent-uniprot,,UniProt,Public data source,Official UniProt public data and tooling,生命科学公共数据源,Global,https://www.uniprot.org,https://github.com/ebi-uniprot,https://www.uniprot.org/help/programmatic_access,Free public resources,active,not_indexed,1,0,,,Official UniProt public data and tooling,2026-07-07
+ent-datadog-labs,Datadog Labs,Datadog Labs,Software platform,pup CLI APM Logs Monitors,可观测,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-sentry,Sentry,Sentry,Software platform,SDK 安装 Issue 修复 AI Monitoring,可观测与错误监控,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-dingtalk,钉钉,DingTalk,Software platform,官方 Workspace CLI,办公协作,China,,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-google-workspace,Google Workspace,Google Workspace,Software platform,官方 Workspace CLI Skills,办公协作,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-kdocs,金山文档,Kdocs,Software platform,官方 WPS AirPage Skill,办公协作,China,,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-lark,飞书,Lark,Software platform,官方 CLI + Agent Skills,办公协作,China,,https://github.com/larksuite/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-microsoft-365,Microsoft 365 / Learn,Microsoft 365,Software platform,Microsoft MCP/Skills 生态,办公协作,US,,https://github.com/MicrosoftDocs/mcp,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-notion,Notion,Notion,Software platform,官方 Notion MCP Server,办公协作,US,,https://github.com/makenotion/notion-mcp-server,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-obsidian,Obsidian,Obsidian,Software platform,CEO 发布 Agent Skills,办公协作,Global,,https://github.com/kepano/obsidian-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-zotero,Zotero,Zotero,Software platform,社区 CLI 补位,办公协作,Global,,https://github.com/zotero/zotero,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-dingtalk-docs,钉钉文档,DingTalk Docs,Software platform,钉钉官方 Workspace CLI 面向 AI Agent 场景,办公套件,China,,https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-lark-cloud-docs,飞书云文档,Lark Cloud Docs,Software platform,飞书 CLI 覆盖文档云盘表格知识库等办公对象,办公套件,China,,https://github.com/larksuite/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wps-365-airpage,WPS 365 AirPage,WPS 365 AirPage,Software platform,本地 CLI 创建编辑智能文档块表格图片评论,办公套件,China,,https://github.com/WPS-SmartDocs/WPS-AirPage-Skill,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-stripe,Stripe,Stripe,Software platform,Stripe 集成与 SDK 升级,支付,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-salesforce,Salesforce,Salesforce,Software platform,CRM CLI,支付电商CRM通信,US,,https://github.com/salesforcecli/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-shopify,Shopify,Shopify,Software platform,Apps Themes Hydrogen,支付电商CRM通信,Canada,,https://github.com/Shopify/cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-twilio,Twilio,Twilio,Software platform,通信 API CLI,支付电商CRM通信,US,,https://github.com/twilio/twilio-cli,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-tinybird,Tinybird,Tinybird,Software platform,Tinybird CLI SQL 数据管道,实时数据平台,Spain/US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-zotero-community,Zotero 社区,Zotero Community,Software platform,Zotero CLI for Claude Code,科研与文献管理,Global,,https://github.com/Agents365-ai/zotero-cli-cc,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-trail-of-bits,Trail of Bits,Trail of Bits,Software platform,静态分析合约安全差分审计,安全审计,US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-xiaohongshu-community,小红书社区,Xiaohongshu community,Software platform,小红书 Skill 高星社区库,社交内容与营销,China,,https://github.com/autoclaw-cc/xiaohongshu-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-anysite,Anysite,Anysite,Software platform,LinkedIn/social intelligence skills,社交媒体,,,https://github.com/anysiteio/agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-bright-data,Bright Data,Bright Data,Software platform,覆盖 Web/Social 数据抽取,社交媒体,,,https://github.com/brightdata/skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-instagram,Instagram,Instagram,Software platform,Meta API 存在但官方 Agent Skill/MCP 未确认,社交媒体,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-reddit,Reddit,Reddit,Software platform,API 存在但 MCP/Skill 多为社区,社交媒体,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-slack,Slack,Slack,Software platform,官方 Slack MCP Plugin 和 Slack CLI,社交媒体,US,,https://github.com/slackapi/slack-mcp-plugin,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-taisly,Taisly,Taisly,Software platform,社交媒体发布 Skill；官方归属需按 Taisly 组织继续核验,社交媒体,,,https://github.com/taisly/agent,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-tiktok,TikTok,TikTok,Software platform,TikTok API 存在但 Skill 多为第三方,社交媒体,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-typefully,Typefully,Typefully,Software platform,官方 Skill 在聚合库中收录,社交媒体,,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wechat,微信,WeChat,Software platform,官方接口分散在开放平台公众号企业微信,社交媒体,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wechat-official-accounts,微信公众号,WeChat Official Accounts,Software platform,社区 md2wechat Skill/CLI 活跃,社交媒体,China,,https://github.com/geekjourneyx/md2wechat-skill,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wecom,企业微信,WeCom,Software platform,API 开放但官方 Agent 入口需查,社交媒体,,待补,,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-x,X / Twitter,X,Software platform,官方 X API CLI 生态明确；Skill/MCP 未确认官方,社交媒体,,,https://github.com/xdevplatform/xurl,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-xiaohongshu,小红书,Xiaohongshu,Software platform,社区 Skill 活跃,社交媒体,China,,https://github.com/autoclaw-cc/xiaohongshu-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-youtube,YouTube,YouTube,Software platform,API/SDK 官方成熟,社交媒体,,,https://github.com/googleapis/google-api-python-client,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-testmu-ai,TestMu AI / LambdaTest,TestMu AI,Software platform,Appium Playwright Selenium Cypress HyperExecute,测试平台,India/US,,https://github.com/VoltAgent/awesome-agent-skills,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
+ent-wechat-ecosystem-community,微信生态社区,WeChat ecosystem community,Software platform,Markdown 到微信公众号排版发布高星项目,微信公众号内容发布,China,,https://github.com/geekjourneyx/md2wechat-skill,,Unknown / needs review,needs_review,indexed,0,0,,,,2026-07-07
