@@ -8,7 +8,7 @@
 ![Status](https://img.shields.io/badge/status-draft--index-blue)
 ![Data](https://img.shields.io/badge/data-SQLite%20%2B%20CSV-informational)
 
-English | [中文](README.zh-CN.md)
+English | [Chinese](README.zh-CN.md)
 
 Information entropy is the first principle of the AI era.
 

@@ -232,6 +232,188 @@ EN_ENTITY_FIELDS = {
     "checked_at": "checked_at",
 }
 
+
+TEXT_EN = {
+    "高": "High",
+    "中高": "Medium-high",
+    "中": "Medium",
+    "低": "Low",
+    "官方": "Official",
+    "准官方": "Quasi-official",
+    "社区": "Community",
+    "有": "Available",
+    "未确认": "Unconfirmed",
+    "未确认官方": "Official source unconfirmed",
+    "未确认官方 Skill": "Official Skill unconfirmed",
+    "未确认官方 MCP": "Official MCP unconfirmed",
+    "未发现": "Not found",
+    "未发现官方": "No official source found",
+    "未发现官方 CLI": "No official CLI found",
+    "未发现官方 Skill": "No official Skill found",
+    "未发现官方 MCP": "No official MCP found",
+    "未发现官方 Skill/MCP": "No official Skill/MCP found",
+    "部分确认": "Partially confirmed",
+    "已确认": "Confirmed",
+    "已确认 CLI": "Confirmed CLI",
+    "已确认 MCP": "Confirmed MCP",
+    "已确认 SDK": "Confirmed SDK",
+    "已确认 API": "Confirmed API",
+    "已确认 Skill": "Confirmed Skill",
+    "已确认 CLI/Skill": "Confirmed CLI/Skill",
+    "已确认 CLI/MCP": "Confirmed CLI/MCP",
+    "已确认 SDK/Skill": "Confirmed SDK/Skill",
+    "已确认 Skill/MCP": "Confirmed Skill/MCP",
+    "已确认 Skill/MCP 指引": "Confirmed Skill/MCP guidance",
+    "待补": "To be added",
+}
+
+
+PHRASE_EN = {
+    "有扩展": "Extension available",
+    "有 gh": "gh available",
+    "有 glab": "glab available",
+    "有 Wrangler": "Wrangler available",
+    "有 mongosh": "mongosh available",
+    "有 hf": "hf available",
+    "有本地 CLI": "Local CLI available",
+    "Microsoft Skill/MCP 生态": "Microsoft Skill/MCP ecosystem",
+    "Skill 内置 CLI 调用": "CLI access through Skill",
+    "有 wind-mcp-skill": "wind-mcp-skill available",
+    "MCP 平台/Token": "MCP platform/token",
+    "未确认 GitHub Skill": "GitHub Skill unconfirmed",
+    "有官方 MCP 平台": "Official MCP platform available",
+    "AgentKit/Base MCP 生态": "AgentKit/Base MCP ecosystem",
+    "有相关 Agent skills": "Related Agent Skills available",
+    "有 Base MCP legacy": "Base MCP legacy available",
+    "MCP 相关工具": "MCP-related tooling",
+    "有 bnbchain-skills": "bnbchain-skills available",
+    "有 BNB Chain MCP 指引": "BNB Chain MCP guidance available",
+    "awal / AgentKit 工具链": "awal / AgentKit toolchain",
+    "有 agentic-wallet-skills": "agentic-wallet-skills available",
+    "有 payments-mcp；AgentKit 含 MCP 示例": "payments-mcp available; AgentKit includes MCP examples",
+    "有 skills-for-ai-agents-by-CoinMarketCap": "skills-for-ai-agents-by-CoinMarketCap available",
+    "Skill 形式支持 MCP Skills": "MCP Skills supported through Skill format",
+    "有 @okx_ai/okx-trade-cli": "@okx_ai/okx-trade-cli available",
+    "有 okx/agent-skills": "okx/agent-skills available",
+    "有 okx/agent-trade-kit": "okx/agent-trade-kit available",
+    "CLI/Skill hub 内工具": "Tools in CLI/Skill hub",
+    "有 binance-skills-hub": "binance-skills-hub available",
+    "未确认官方 MCP；社区 MCP 多": "Official MCP unconfirmed; many community MCP projects",
+    "有 kraken-cli": "kraken-cli available",
+    "CLI 内置 Agent 场景；未确认独立 Skill 仓库": "Agent workflows built into CLI; standalone Skill repo unconfirmed",
+    "CLI 内置 MCP server": "MCP server built into CLI",
+    "API/数据平台": "API/data platform",
+    "有 hosted/平台 MCP 线索": "Hosted/platform MCP signals found",
+    "有 Microsoft Skills": "Microsoft Skills available",
+    "有 Microsoft MCP": "Microsoft MCP available",
+    "MCP 生态核心方": "Core MCP ecosystem participant",
+    "未确认官方 MCP": "Official MCP unconfirmed",
+    "有 20+ Agent Skills": "20+ Agent Skills available",
+    "基于 MCP metadata/CLI": "MCP metadata/CLI based",
+    "Plugin/MCP": "Plugin/MCP",
+    "有 gws": "gws available",
+    "未确认独立 MCP": "Standalone MCP unconfirmed",
+    "未确认官方 CLI": "Official CLI unconfirmed",
+    "Plugin/Skill 形态": "Plugin/Skill format",
+    "有官方 MCP": "Official MCP available",
+    "生态 CLI": "Ecosystem CLI",
+    "有 CLI/MCP": "CLI/MCP available",
+    "有 Skills": "Skills available",
+    "有 MCP": "MCP available",
+    "有 hosted MCP / plugin": "Hosted MCP/plugin available",
+    "有官方 MCP Skills": "Official MCP Skills available",
+    "有 Agent Skill": "Agent Skill available",
+    "高，商业授权": "High, commercial license",
+    "中高，商业授权": "Medium-high, commercial license",
+    "中高，平台授权": "Medium-high, platform license",
+    "中高，积分/授权": "Medium-high, points/license",
+    "高，账户授权": "High, account authorization",
+}
+
+
+NAME_EN = {
+    "米筐 Ricequant": "Ricequant",
+    "聚宽 JoinQuant": "JoinQuant",
+    "东方财富 Choice": "Eastmoney Choice",
+    "同花顺 iFinD": "iFinD",
+    "Wind / 万得": "Wind",
+    "钉钉 / DingTalk": "DingTalk",
+    "Kdocs / 金山文档 / WPS 365": "Kdocs / WPS 365",
+    "飞书 / Lark / Feishu": "Lark / Feishu",
+    "语雀 / Yuque": "Yuque",
+    "Binance / 币安": "Binance",
+    "阿里云百炼 Model Studio": "Alibaba Cloud Model Studio",
+    "来也 ADP": "Laiye ADP",
+    "Choice 金融终端": "Choice financial terminal",
+    "小红书": "Xiaohongshu",
+    "微信公众号": "WeChat Official Accounts",
+    "小红书社区": "Xiaohongshu community",
+    "139 个小红书运营技能": "139 Xiaohongshu operations skills",
+    "iFinD MCP 平台": "iFinD MCP platform",
+}
+
+
+def has_han(value: object) -> bool:
+    return any("\u4e00" <= ch <= "\u9fff" for ch in str(value or ""))
+
+
+def english_name(value: object, fallback: object = "") -> str:
+    text = str(value or "").strip()
+    if not text:
+        return str(fallback or "")
+    if text in NAME_EN:
+        return NAME_EN[text]
+    if "/" in text or "／" in text:
+        parts = [part.strip() for part in text.replace("／", "/").split("/")]
+        latin = [part for part in parts if part and not has_han(part)]
+        if latin:
+            return " / ".join(latin)
+    if has_han(text):
+        fallback_text = str(fallback or "").strip()
+        if fallback_text and not has_han(fallback_text):
+            return fallback_text
+    return text
+
+
+def english_text(value: object) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    if text in PHRASE_EN:
+        return PHRASE_EN[text]
+    if text in TEXT_EN:
+        return TEXT_EN[text]
+    translated = text
+    dictionary = {**TEXT_EN, **PHRASE_EN}
+    for source, target in sorted(dictionary.items(), key=lambda item: len(item[0]), reverse=True):
+        translated = translated.replace(source, target)
+    return "" if has_han(translated) else translated
+
+
+def english_export_row(row: dict[str, Any], mapping: dict[str, str]) -> dict[str, str]:
+    output: dict[str, str] = {}
+    for field, label in mapping.items():
+        value = row.get(field, "")
+        if field in {"platform_en", "entity_name_en", "product_or_resource"}:
+            value = english_name(value, row.get("product_or_resource") or row.get("platform_en", ""))
+        elif field == "source_url" and has_han(value):
+            value = ""
+        elif field in {
+            "official_cli",
+            "official_skill",
+            "official_mcp",
+            "official_sdk_api",
+            "official_status_en",
+            "verification_status",
+            "openness_level",
+            "description_en",
+            "notes",
+        }:
+            value = english_text(value)
+        output[label] = str(value or "")
+    return output
+
+
 def schema_rows() -> list[dict[str, Any]]:
     table_fields = {
         "data_sources": DATA_SOURCE_FIELDS,
@@ -272,15 +454,18 @@ def read_table(table: str) -> list[dict[str, Any]]:
 
 def write_readable_csv(path: Path, mapping: dict[str, str], rows: list[dict[str, Any]]) -> None:
     with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(mapping.values()))
+        writer = csv.DictWriter(f, fieldnames=list(mapping.values()), lineterminator="\n")
         writer.writeheader()
         for row in rows:
-            writer.writerow({label: row.get(field, "") for field, label in mapping.items()})
+            if path.name.endswith(".en.csv"):
+                writer.writerow(english_export_row(row, mapping))
+            else:
+                writer.writerow({label: row.get(field, "") for field, label in mapping.items()})
 
 
 def write_schema_csv(rows: list[dict[str, Any]]) -> None:
     with SCHEMA_CSV.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=SCHEMA_FIELDS)
+        writer = csv.DictWriter(f, fieldnames=SCHEMA_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
