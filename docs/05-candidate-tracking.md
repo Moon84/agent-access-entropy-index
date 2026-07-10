@@ -62,6 +62,34 @@ The current discovery script supports:
 
 `scripts/sync_entities_from_sources.py` auto-generates watch sources from each tracked entity's `primary_github`, `primary_docs`, and `official_homepage`. Entities without a usable public URL remain in the table with `needs_source` status so they can be completed later.
 
+GitHub repositories also get generated Atom feed sources for releases and commits when possible. The preferred scan order is GitHub API/CLI and feeds first, then public web pages.
+
+## Incremental State
+
+Discovery is incremental. Runtime state is stored in the SQLite `tracking_state` table:
+
+| Field | Meaning |
+|---|---|
+| `watch_id` | Linked watch source. |
+| `last_checked_at` / `last_success_at` | Latest scan and latest successful scan. |
+| `last_seen_signature` | Latest update marker, such as GitHub `pushed_at` or feed updated date. |
+| `next_check_after` | Next due time for this watch source. |
+| `failure_count` | Consecutive failures. |
+| `fallback_method` / `fallback_count` | Fallback used for difficult sources, such as `crawl4ai`. |
+| `notes` | Operational notes, including degraded/fallback handling. |
+
+Default scan frequencies are shorter for GitHub and feeds, and longer for ordinary web pages. Use `--force` only for audits or backfills.
+
+Useful options:
+
+```bash
+python3 scripts/discover_candidates.py --limit-per-source 20
+python3 scripts/discover_candidates.py --force --limit-per-source 20
+python3 scripts/discover_candidates.py --max-sources 20 --limit-per-source 5
+```
+
+For non-GitHub web pages, the scanner first uses a fast HTTP request. If that fails and `crawl4ai` is available, it falls back to Crawl4AI and records the fallback in `tracking_state`, then lowers the scan frequency to avoid repeated slow crawls.
+
 ## Review
 
 Run the local pipeline:

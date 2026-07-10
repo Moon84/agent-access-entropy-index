@@ -7,6 +7,7 @@ import json
 import re
 import sqlite3
 import urllib.parse
+from hashlib import sha1
 from collections import Counter, defaultdict
 from datetime import date
 from typing import Any
@@ -114,6 +115,8 @@ def valid_url(url: str) -> bool:
 def source_type_for_url(url: str) -> str:
     normalized = normalize_url(url)
     parsed = urllib.parse.urlparse(normalized)
+    if normalized.endswith((".rss", ".xml", ".atom")) or "rss" in parsed.path.lower() or "feed" in parsed.path.lower():
+        return "rss"
     if parsed.netloc != "github.com":
         return "web_page"
     parts = [part for part in parsed.path.split("/") if part]
@@ -122,8 +125,42 @@ def source_type_for_url(url: str) -> str:
     return "github_repo"
 
 
-def watch_id(entity_id: str, source_type: str, label: str) -> str:
-    return f"{entity_id}-{source_type}-{slug(label)}"[:120]
+def watch_id(entity_id: str, source_type: str, label: str, url: str = "") -> str:
+    url_hash = sha1(normalize_url(url).encode("utf-8")).hexdigest()[:10] if url else ""
+    suffix = f"-{url_hash}" if url_hash else ""
+    return f"{entity_id}-{source_type}-{slug(label)}{suffix}"[:120]
+
+
+def github_feed_sources(entity: dict[str, str], github_url: str) -> list[dict[str, str]]:
+    normalized = normalize_url(github_url)
+    parsed = urllib.parse.urlparse(normalized)
+    parts = [part for part in parsed.path.split("/") if part]
+    if parsed.netloc != "github.com" or len(parts) < 2:
+        return []
+    repo = f"https://github.com/{parts[0]}/{parts[1]}"
+    feeds = [
+        ("GitHub Releases Feed", f"{repo}/releases.atom"),
+        ("GitHub Commits Feed", f"{repo}/commits.atom"),
+    ]
+    watches: list[dict[str, str]] = []
+    for label, url in feeds:
+        watches.append(
+            {
+                "watch_id": watch_id(str(entity["entity_id"]), "atom", label),
+                "entity_id": str(entity["entity_id"]),
+                "domain_zh": str(entity.get("domain_zh", "")),
+                "domain_en": str(entity.get("domain_en", "")),
+                "target_name": f"{entity.get('entity_name_en') or entity.get('entity_name_zh')} {label}".strip(),
+                "source_type": "atom",
+                "source_url": url,
+                "official_homepage": normalize_url(str(entity.get("official_homepage", ""))) if valid_url(str(entity.get("official_homepage", ""))) else "",
+                "keywords": watch_keywords(str(entity.get("domain_en", ""))),
+                "exclude_terms": EXCLUDE_TERMS,
+                "notes": "Auto-generated GitHub Atom feed; preferred for incremental tracking before web crawl",
+                "checked_at": str(entity.get("checked_at", "")),
+            }
+        )
+    return watches
 
 
 def watch_keywords(domain_en: str) -> str:
@@ -174,6 +211,8 @@ def generated_watch_sources(entity: dict[str, str]) -> list[dict[str, str]]:
                 "checked_at": str(entity.get("checked_at", "")),
             }
         )
+        if source_key == "primary_github" and source_type == "github_repo":
+            watches.extend(github_feed_sources(entity, url))
     return watches
 
 
@@ -193,6 +232,12 @@ def merge_watch_sources(existing_json: str, generated: list[dict[str, str]]) -> 
         merged = {**normalized, **by_url.get(url, {})} if url in by_url else normalized
         merged["source_url"] = url
         merged["source_type"] = source_type_for_url(url)
+        merged["watch_id"] = watch_id(
+            str(merged.get("entity_id", "")),
+            str(merged.get("source_type", "")),
+            str(merged.get("target_name") or merged.get("source_url") or "source"),
+            url,
+        )
         by_url[url] = merged
     return json.dumps(list(by_url.values()), ensure_ascii=False, sort_keys=True)
 
@@ -359,6 +404,8 @@ def merge_entity(existing: dict[str, Any] | None, name: str, rows: list[dict[str
     entity["watch_sources_json"] = merge_watch_sources(entity["watch_sources_json"] or "[]", generated_watch_sources(entity))
     if entity["watch_sources_json"] == "[]":
         entity["tracking_status"] = "needs_source"
+    elif entity["tracking_status"] == "needs_source":
+        entity["tracking_status"] = "needs_review"
     return entity
 
 

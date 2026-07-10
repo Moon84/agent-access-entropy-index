@@ -10,18 +10,21 @@ from __future__ import annotations
 import argparse
 import html
 import json
-import os
 import re
+import shutil
+import sqlite3
+import subprocess
 import sys
 import time
 import xml.etree.ElementTree as ET
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from index_store import DB_PATH
 from index_store import known_urls as load_index_known_urls
 from index_store import watchlist_rows
 
@@ -29,6 +32,22 @@ from index_store import watchlist_rows
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 CANDIDATES_DIR = DATA / "09-candidates"
+SCAN_INTERVALS = {
+    "github_org": 24,
+    "github_user": 24,
+    "github_repo": 24,
+    "rss": 12,
+    "atom": 12,
+    "web_page": 168,
+}
+SOURCE_PRIORITY = {
+    "github_repo": 10,
+    "github_org": 10,
+    "github_user": 10,
+    "rss": 20,
+    "atom": 20,
+    "web_page": 30,
+}
 
 
 def load_watchlist(path: Path) -> list[dict[str, str]]:
@@ -48,31 +67,193 @@ def normalize_url(url: str) -> str:
     return text
 
 
-def github_request(path: str, token: str | None) -> dict[str, Any]:
-    request = urllib.request.Request(
-        "https://api.github.com" + path,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "agent-access-entropy-index-discovery",
-            **({"Authorization": f"Bearer {token}"} if token else {}),
-        },
-    )
+def now_utc() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def parse_dt(value: str | None) -> datetime | None:
+    if not value:
+        return None
     try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GitHub API error {exc.code}: {body}") from exc
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
 
 
-def http_text(url: str, token: str | None = None) -> str:
+def iso(dt: datetime | None = None) -> str:
+    return (dt or now_utc()).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def ensure_tracking_state(conn: sqlite3.Connection) -> None:
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tracking_state (
+            watch_id TEXT PRIMARY KEY,
+            source_url TEXT,
+            source_type TEXT,
+            last_checked_at TEXT,
+            last_success_at TEXT,
+            last_seen_updated_at TEXT,
+            last_seen_signature TEXT,
+            failure_count INTEGER DEFAULT 0,
+            next_check_after TEXT,
+            scan_frequency_hours INTEGER DEFAULT 24,
+            last_error TEXT,
+            fallback_method TEXT,
+            fallback_count INTEGER DEFAULT 0,
+            notes TEXT
+        )
+        """
+    )
+
+
+def tracking_state(conn: sqlite3.Connection, watch_id: str) -> dict[str, Any]:
+    ensure_tracking_state(conn)
+    row = conn.execute("SELECT * FROM tracking_state WHERE watch_id = ?", (watch_id,)).fetchone()
+    return dict(row) if row else {}
+
+
+def due_watches(watchlist: list[dict[str, str]], force: bool = False) -> list[dict[str, str]]:
+    if force:
+        return sorted(watchlist, key=lambda watch: SOURCE_PRIORITY.get(watch.get("source_type", ""), 99))
+    due: list[dict[str, str]] = []
+    current = now_utc()
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        ensure_tracking_state(conn)
+        for watch in watchlist:
+            state = tracking_state(conn, watch.get("watch_id", ""))
+            next_check = parse_dt(str(state.get("next_check_after") or ""))
+            if not next_check or next_check <= current:
+                due.append(watch)
+    return sorted(due, key=lambda watch: SOURCE_PRIORITY.get(watch.get("source_type", ""), 99))
+
+
+def source_signature(candidate: dict[str, Any]) -> str:
+    for key in ("pushed_at", "updated_at", "created_at"):
+        if candidate.get(key):
+            return str(candidate[key])
+    return str(candidate.get("url") or candidate.get("candidate_id") or "")
+
+
+def max_candidate_signature(candidates: list[dict[str, Any]]) -> str:
+    signatures = [source_signature(candidate) for candidate in candidates if source_signature(candidate)]
+    return max(signatures) if signatures else ""
+
+
+def filter_incremental(candidates: list[dict[str, Any]], state: dict[str, Any]) -> list[dict[str, Any]]:
+    last = str(state.get("last_seen_signature") or state.get("last_seen_updated_at") or "")
+    if not last:
+        return candidates
+    fresh = [candidate for candidate in candidates if source_signature(candidate) > last]
+    return fresh
+
+
+def update_tracking_state(
+    watch: dict[str, str],
+    success: bool,
+    candidates: list[dict[str, Any]],
+    error: str = "",
+    fallback_method: str = "",
+) -> None:
+    source_type = watch.get("source_type", "")
+    interval = SCAN_INTERVALS.get(source_type, 168)
+    if source_type == "web_page" and fallback_method:
+        interval = max(interval, 336)
+    current = now_utc()
+    next_check = current + timedelta(hours=interval)
+    signature = max_candidate_signature(candidates)
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        ensure_tracking_state(conn)
+        state = tracking_state(conn, watch.get("watch_id", ""))
+        failures = 0 if success else int(state.get("failure_count") or 0) + 1
+        fallback_count = int(state.get("fallback_count") or 0) + (1 if fallback_method else 0)
+        notes = str(state.get("notes") or "")
+        if fallback_method and fallback_method not in notes:
+            notes = "; ".join(item for item in [notes, f"fallback={fallback_method}; web_page scan frequency reduced"] if item)
+        conn.execute(
+            """
+            INSERT INTO tracking_state (
+                watch_id, source_url, source_type, last_checked_at, last_success_at,
+                last_seen_updated_at, last_seen_signature, failure_count, next_check_after,
+                scan_frequency_hours, last_error, fallback_method, fallback_count, notes
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(watch_id) DO UPDATE SET
+                source_url = excluded.source_url,
+                source_type = excluded.source_type,
+                last_checked_at = excluded.last_checked_at,
+                last_success_at = excluded.last_success_at,
+                last_seen_updated_at = COALESCE(NULLIF(excluded.last_seen_updated_at, ''), tracking_state.last_seen_updated_at),
+                last_seen_signature = COALESCE(NULLIF(excluded.last_seen_signature, ''), tracking_state.last_seen_signature),
+                failure_count = excluded.failure_count,
+                next_check_after = excluded.next_check_after,
+                scan_frequency_hours = excluded.scan_frequency_hours,
+                last_error = excluded.last_error,
+                fallback_method = COALESCE(NULLIF(excluded.fallback_method, ''), tracking_state.fallback_method),
+                fallback_count = excluded.fallback_count,
+                notes = excluded.notes
+            """,
+            (
+                watch.get("watch_id", ""),
+                watch.get("source_url", ""),
+                source_type,
+                iso(current),
+                iso(current) if success else str(state.get("last_success_at") or ""),
+                signature,
+                signature,
+                failures,
+                iso(next_check),
+                interval,
+                "" if success else error[:500],
+                fallback_method,
+                fallback_count,
+                notes,
+            ),
+        )
+        conn.commit()
+
+
+def github_request(path: str, token: str | None) -> dict[str, Any]:
+    if not shutil.which("gh"):
+        raise RuntimeError("GitHub CLI `gh` is required for GitHub discovery. Run `gh auth login` first.")
+    try:
+        result = subprocess.run(
+            ["gh", "api", path],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=45,
+        )
+        return json.loads(result.stdout)
+    except subprocess.CalledProcessError as exc:
+        stderr = exc.stderr.strip() if exc.stderr else ""
+        raise RuntimeError(f"gh api failed for {path}: {stderr}") from exc
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(f"gh api timed out for {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"gh api returned invalid JSON for {path}") from exc
+
+
+def http_text(url: str) -> str:
     headers = {"User-Agent": "agent-access-entropy-index-discovery"}
-    if "api.github.com" in url and token:
-        headers["Authorization"] = f"Bearer {token}"
-        headers["Accept"] = "application/vnd.github+json"
     request = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(request, timeout=30) as response:
+    with urllib.request.urlopen(request, timeout=10) as response:
         return response.read().decode("utf-8", errors="replace")
+
+
+def crawl4ai_text(url: str) -> str:
+    if shutil.which("crwl"):
+        result = subprocess.run(
+            ["crwl", url, "-o", "markdown-fit"],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        return result.stdout
+    raise RuntimeError("crawl4ai fallback unavailable: `crwl` not found")
 
 
 def split_terms(value: str) -> list[str]:
@@ -142,6 +323,21 @@ def repo_candidate(item: dict[str, Any], watch: dict[str, str], run_id: str, hit
     }
 
 
+def feed_candidate(
+    watch: dict[str, str],
+    run_id: str,
+    title: str,
+    link: str,
+    summary: str,
+    hits: list[str],
+    updated_at: str = "",
+) -> dict[str, Any]:
+    candidate = generic_candidate(watch, run_id, "feed", title, link, summary, hits)
+    candidate["updated_at"] = updated_at
+    candidate["source_system"] = "feed"
+    return candidate
+
+
 def infer_resource_type_hints(text: str) -> list[str]:
     lower = text.lower()
     hints: list[str] = []
@@ -208,11 +404,12 @@ def discover_feed_watch(watch: dict[str, str], limit: int, run_id: str) -> list[
         title = first_xml_text(entry, ["title"])
         summary = first_xml_text(entry, ["summary", "description", "content"])
         link = first_xml_link(entry)
+        updated_at = first_xml_text(entry, ["updated", "published", "pubDate", "lastBuildDate"])
         body = " ".join([title, summary, link])
         hits = keyword_hits(body, keywords)
         if not hits or has_exclusion(body, exclusions):
             continue
-        candidates.append(generic_candidate(watch, run_id, "feed", title, link, summary, hits))
+        candidates.append(feed_candidate(watch, run_id, title, link, summary, hits, updated_at))
     return candidates
 
 
@@ -233,7 +430,16 @@ def first_xml_link(entry: ET.Element) -> str:
 
 
 def discover_web_page_watch(watch: dict[str, str], run_id: str) -> list[dict[str, Any]]:
-    text = http_text(watch["source_url"])
+    fallback_method = ""
+    try:
+        text = http_text(watch["source_url"])
+    except Exception as exc:
+        try:
+            text = crawl4ai_text(watch["source_url"])
+            fallback_method = "crawl4ai"
+            print(f"info: crawl4ai fallback used watch_id={watch.get('watch_id')}", file=sys.stderr)
+        except Exception as fallback_exc:
+            raise RuntimeError(f"request failed: {exc}; crawl4ai fallback failed: {fallback_exc}") from fallback_exc
     cleaned = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", text, flags=re.I | re.S)
     plain = re.sub(r"<[^>]+>", " ", cleaned)
     plain = html.unescape(re.sub(r"\s+", " ", plain)).strip()
@@ -242,7 +448,11 @@ def discover_web_page_watch(watch: dict[str, str], run_id: str) -> list[dict[str
         return []
     title_match = re.search(r"<title[^>]*>(.*?)</title>", text, flags=re.I | re.S)
     title = html.unescape(re.sub(r"\s+", " ", title_match.group(1)).strip()) if title_match else watch["target_name"]
-    return [generic_candidate(watch, run_id, "web_page", title, watch["source_url"], plain[:500], hits)]
+    candidates = [generic_candidate(watch, run_id, "web_page", title, watch["source_url"], plain[:500], hits)]
+    if fallback_method:
+        for candidate in candidates:
+            candidate["fallback_method"] = fallback_method
+    return candidates
 
 
 def generic_candidate(
@@ -290,17 +500,29 @@ def discover_watchlist(watchlist: list[dict[str, str]], limit: int, token: str |
     for watch in watchlist:
         source_type = watch.get("source_type", "")
         try:
+            state: dict[str, Any]
+            with sqlite3.connect(DB_PATH) as conn:
+                conn.row_factory = sqlite3.Row
+                state = tracking_state(conn, watch.get("watch_id", ""))
             if source_type in {"github_org", "github_user", "github_repo"}:
-                candidates.extend(discover_github_watch(watch, limit, token, run_id))
+                found = discover_github_watch(watch, limit, token, run_id)
             elif source_type in {"rss", "atom"}:
-                candidates.extend(discover_feed_watch(watch, limit, run_id))
+                found = discover_feed_watch(watch, limit, run_id)
             elif source_type == "web_page":
-                candidates.extend(discover_web_page_watch(watch, run_id))
+                found = discover_web_page_watch(watch, run_id)
             else:
                 print(f"skipping unsupported source_type={source_type} watch_id={watch.get('watch_id')}", file=sys.stderr)
+                found = []
+            incremental = filter_incremental(found, state)
+            candidates.extend(incremental)
+            fallback_method = ""
+            for candidate in found:
+                fallback_method = str(candidate.get("fallback_method") or fallback_method)
+            update_tracking_state(watch, True, found, fallback_method=fallback_method)
         except Exception as exc:
             print(f"warning: failed watch_id={watch.get('watch_id')}: {exc}", file=sys.stderr)
-        time.sleep(1)
+            update_tracking_state(watch, False, [], error=str(exc))
+        time.sleep(0.1)
     return candidates
 
 
@@ -316,12 +538,16 @@ def main() -> int:
     parser.add_argument("--watchlist", default="__sqlite__")
     parser.add_argument("--limit-per-source", type=int, default=20)
     parser.add_argument("--output", default="")
+    parser.add_argument("--force", action="store_true", help="Ignore tracking_state due times and scan all watch sources.")
+    parser.add_argument("--max-sources", type=int, default=0, help="Limit due watch sources for smoke tests or short runs.")
     args = parser.parse_args()
 
-    watchlist = load_watchlist(Path(args.watchlist))
+    watchlist = due_watches(load_watchlist(Path(args.watchlist)), force=args.force)
+    if args.max_sources:
+        watchlist = watchlist[: args.max_sources]
     known_urls = load_known_urls()
     run_id = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    token = os.environ.get("GITHUB_TOKEN")
+    token = None
 
     candidates = discover_watchlist(watchlist, args.limit_per_source, token, run_id)
     deduped: dict[str, dict[str, Any]] = {}

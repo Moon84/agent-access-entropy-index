@@ -17,26 +17,26 @@ Information entropy is the first principle of the AI era.
 
 | Access resources | Platforms / software | Industries / domains | Official source ratio | Access Index |
 |---:|---:|---:|---:|---:|
-| 202 | 147 | 45 | 116 / 202 (57.4%) | 64.7 / 100 |
+| 318 | 246 | 58 | 168 / 318 (52.8%) | 61.4 / 100 |
 
 ### Industry Coverage
 
 | Industry / domain | Resources | Distribution | Official sources | Official share |
 |---|---:|---|---:|---:|
-| Crypto trading | 39 | `█████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓` | 14 | 35.9% |
-| Financial data and terminals | 17 | `█▓▓▓▓▓▓▓▓▓              ` | 1 | 5.9% |
-| Office and collaboration | 17 | `████████▓▓              ` | 14 | 82.4% |
-| Cloud, data, and AI | 14 | `████████▓               ` | 13 | 92.9% |
-| Social media | 14 | `███▓▓▓▓▓▓               ` | 5 | 35.7% |
-| Cloud and cloud native | 13 | `██████▓▓                ` | 9 | 69.2% |
-| Financial data | 10 | `███▓▓▓                  ` | 5 | 50.0% |
-| Data platforms and databases | 8 | `███▓▓                   ` | 5 | 62.5% |
-| AI and model platforms | 7 | `███▓                    ` | 6 | 85.7% |
-| Office suites | 7 | `████                    ` | 7 | 100.0% |
-| Data providers | 6 | `▓▓▓▓                    ` | 0 | 0.0% |
-| Design, frontend, and mobile | 4 | `██                      ` | 4 | 100.0% |
+| Office and collaboration | 43 | `████████████▓▓▓▓▓▓▓▓▓▓▓▓` | 21 | 48.8% |
+| Crypto trading | 39 | `████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ` | 14 | 35.9% |
+| Social media | 23 | `███▓▓▓▓▓▓▓▓▓▓           ` | 6 | 26.1% |
+| Financial data and terminals | 20 | `█▓▓▓▓▓▓▓▓▓▓             ` | 2 | 10.0% |
+| Documents and knowledge bases | 18 | `█████▓▓▓▓▓              ` | 9 | 50.0% |
+| Life sciences and biomedical research | 17 | `█████████               ` | 17 | 100.0% |
+| Cloud and cloud native | 14 | `█████▓▓▓                ` | 9 | 64.3% |
+| Cloud, data, and AI | 14 | `███████▓                ` | 13 | 92.9% |
+| Financial data | 12 | `███▓▓▓▓                 ` | 5 | 41.7% |
+| Data providers | 10 | `▓▓▓▓▓▓                  ` | 0 | 0.0% |
+| Payments, commerce, CRM, and communications | 9 | `█▓▓▓▓                   ` | 1 | 11.1% |
+| Data platforms and databases | 8 | `██▓▓                    ` | 5 | 62.5% |
 
-Access Index = `100 * (0.7 * official_source_ratio + 0.3 * industry_entropy_score)`. The chart shows the top 12 industries by resource count; `█` means official sources, `▓` means unconfirmed or non-official sources, and blank space is unfilled length. The industry entropy score is 81.7% across all industries.
+Access Index = `100 * (0.7 * official_source_ratio + 0.3 * industry_entropy_score)`. The chart shows the top 12 industries by resource count; `█` means official sources, `▓` means unconfirmed or non-official sources, and blank space is unfilled length. The industry entropy score is 81.2% across all industries.
 
 Primary data: `data/01-index.sqlite`. Version: `0.1.0`.
 <!-- resource-stats:end -->
