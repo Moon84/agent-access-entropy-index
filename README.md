@@ -15,11 +15,28 @@ Information entropy is the first principle of the AI era.
 <!-- resource-stats:start -->
 ## Dataset Snapshot
 
-| Metric | Count |
-|---|---:|
-| Access resources | 202 |
-| Platforms / software | 147 |
-| Industries / domains | 45 |
+| Access resources | Platforms / software | Industries / domains | Official source ratio | Access Index |
+|---:|---:|---:|---:|---:|
+| 202 | 147 | 45 | 116 / 202 (57.4%) | 64.7 / 100 |
+
+### Industry Coverage
+
+| Industry / domain | Resources | Distribution | Official sources | Official share |
+|---|---:|---|---:|---:|
+| Crypto trading | 39 | `█████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓` | 14 | 35.9% |
+| Financial data and terminals | 17 | `█▓▓▓▓▓▓▓▓▓              ` | 1 | 5.9% |
+| Office and collaboration | 17 | `████████▓▓              ` | 14 | 82.4% |
+| Cloud, data, and AI | 14 | `████████▓               ` | 13 | 92.9% |
+| Social media | 14 | `███▓▓▓▓▓▓               ` | 5 | 35.7% |
+| Cloud and cloud native | 13 | `██████▓▓                ` | 9 | 69.2% |
+| Financial data | 10 | `███▓▓▓                  ` | 5 | 50.0% |
+| Data platforms and databases | 8 | `███▓▓                   ` | 5 | 62.5% |
+| AI and model platforms | 7 | `███▓                    ` | 6 | 85.7% |
+| Office suites | 7 | `████                    ` | 7 | 100.0% |
+| Data providers | 6 | `▓▓▓▓                    ` | 0 | 0.0% |
+| Design, frontend, and mobile | 4 | `██                      ` | 4 | 100.0% |
+
+Access Index = `100 * (0.7 * official_source_ratio + 0.3 * industry_entropy_score)`. The chart shows the top 12 industries by resource count; `█` means official sources, `▓` means unconfirmed or non-official sources, and blank space is unfilled length. The industry entropy score is 81.7% across all industries.
 
 Primary data: `data/01-index.sqlite`. Version: `0.1.0`.
 <!-- resource-stats:end -->
