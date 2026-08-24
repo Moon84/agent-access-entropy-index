@@ -1,7 +1,7 @@
 {
   "name": "agent-access-entropy-index",
   "version": "0.1.0",
-  "generated_at": "2026-08-17",
+  "generated_at": "2026-08-24",
   "primary_data": "data/01-index.sqlite",
   "tables": [
     "data_sources",
@@ -23,7 +23,7 @@
   "files": {
     "data/01-index.sqlite": {
       "bytes": 1236992,
-      "sha256": "723604d955ca78760e06dd76f46da4a817a7ac5253041e5b531a0c8885f2645b"
+      "sha256": "5b705b894abfec0afc0444a0ec86863fa1b0bc38a5e9eef12f2390b203d4b575"
     },
     "data/01-data-sources.zh-CN.csv": {
       "bytes": 111191,
@@ -34,12 +34,12 @@
       "sha256": "d9741753b4153cba715236b89b6ffb55d5b45a15a40e512355677925950ed5b2"
     },
     "data/02-tracked-entities.zh-CN.csv": {
-      "bytes": 74946,
-      "sha256": "9f66c4545e0db825babb2f81fc6f9d07b39e1d339f3ad1a61836b680d51fa6fe"
+      "bytes": 74943,
+      "sha256": "745ce4b814d20502c83064354532389a7ae5160f98da8fb02d3b251c1d2171bf"
     },
     "data/02-tracked-entities.en.csv": {
-      "bytes": 85479,
-      "sha256": "6c5663597582891d409d1b43b16293c081a341c6209f9816bac5e20dcacd09c9"
+      "bytes": 85476,
+      "sha256": "8ccda783b3aaaf208100e107e61bee2d62ff98a25cf15f1ea2d487dcf735ec52"
     },
     "data/03-schema.csv": {
       "bytes": 6151,
